@@ -1,0 +1,68 @@
+#outer-wrapper #page-canvas, .items-list {
+    background-color: #f9f9f9;
+}
+#map-container{
+	height:580px;
+}
+#legend {
+	font-family: Arial, sans-serif;
+	background: rgba(255, 255, 255, 0.8);
+	padding: 5px;
+	margin: 5px;
+}
+.legend {
+	padding-bottom: 1px;
+}
+.btn {
+	margin-top:5px;
+}
+.btn-flat {
+	border-radius: 0px;
+}
+.panel {
+	background-color: #ffffff;
+	color: #161616;
+}
+.panel-heading {
+	padding: 5px;
+	background-color: #fffefe;
+}
+#ex1Slider .slider-selection {
+	background: #ccc;
+}
+.items-list {
+	padding: 20px 10px 20px 20px;
+    overflow: auto;
+}
+.items-list .inner {
+    height: auto;
+    width: 100%;
+    position: relative;
+}
+.panel-group {
+    margin-bottom: 0px;
+}
+.list-det {
+	background-color: rgba(68, 163, 211, 0.09);
+}
+.list-det a{
+	color: black;
+}
+.nama {
+	font-weight:bold;
+    font-size: 16px;
+    text-transform: uppercase;
+}
+.star2, .star{
+	color: #ccc;
+	cursor: pointer;
+	transition: all 0.2s linear;
+}
+.star-checked{
+	color: gold;
+}
+#isir:hover a{
+  color: #428bca;
+  outline: none !important;
+  text-decoration: none;
+}
