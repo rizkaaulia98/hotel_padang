@@ -10,13 +10,13 @@
     <title>Halal Tourism • Padang</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="angkot_bkt/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="hotel/assets/css/bootstrap.css" rel="stylesheet">
     <!--external css-->
-    <link href="angkot_bkt/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link href="hotel/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
 
     <!-- Custom styles for this template -->
-    <link href="angkot_bkt/assets/css/style.css" rel="stylesheet">
-    <link href="angkot_bkt/assets/css/style-responsive.css" rel="stylesheet">
+    <link href="hotel/assets/css/style.css" rel="stylesheet">
+    <link href="hotel/assets/css/style-responsive.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>

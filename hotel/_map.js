@@ -1,5 +1,5 @@
 var map;
-var server = "http://localhost/unitami3/hotel_bkt/";//ipServerHotel
+var server = "http://localhost/hotel_padang1/hotel/";//ipServerHotel
 var cekRadiusStatus = "off";   //RADIUS
 var circles = []; //RADIUS
 var rad; //RADIUS
@@ -507,17 +507,17 @@ $.ajax({url: server+'_data_hotel_1.php?cari='+ids, data: "", dataType: 'json', s
 
     var syarat="-";
     if (ktp == 1 && marriage_book == 1) {
-      syarat = "KTP & Buku Nikah";
+      syarat = "ID Card & Marriage Certificate";
     }
     else if (ktp == 1) {
-      syarat = "KTP";
+      syarat = "ID Card";
     } else if (marriage_book == 1) {
-      syarat = "Buku Nikah";
+      syarat = "Marriage Certificate";
     }
 
     var mushalla_stat = "-";
     if (mushalla == 1) {
-      mushalla_stat = "Ada Mushalla"
+      mushalla_stat = "Exist"
     };
     console.log(name);
     $('#table_tengah_info').append(
@@ -1091,18 +1091,18 @@ $.ajax({url: server+'_data_hotel_1.php?cari='+id, data: "", dataType: 'json', su
     var lng = row.lng;
 
     if (mushalla == 1) {
-      mushalla= "Ada";
+      mushalla= "Exist";
     } else {
-      mushalla= "Tidak Ada";
+      mushalla= "None";
     }
     console.log(name);
     var syarat = "-";
     if (marriage_book == 1 && ktp == 1) {
-      syarat= "Marriage Book & KTP";
+      syarat= "Marriage Certificate & ID Card";
     } else if (marriage_book == 1) {
-      syarat= "Marriage Book";
+      syarat= "Marriage Certificate";
     } else if (ktp == 1) {
-      syarat= "KTP";
+      syarat= "ID Card";
     }
     document.getElementById('mg_body').innerHTML="<h2>"+name+"</h2><h4>"+type_hotel+"</h4><br><div style='margin-left:20px'>Address: "+address+"<br>Cp: "+cp+"<br>Mushalla: "+mushalla+"<br>Requirement: "+syarat+"</div>";
   }//end for
@@ -2152,17 +2152,17 @@ if (j==0) {
 
         var syarat="-";
         if (ktp == 1 && marriage_book == 1) {
-          syarat = "KTP & Buku Nikah";
+          syarat = "ID Card & Marriage Certificate";
         }
         else if (ktp == 1) {
-          syarat = "KTP";
+          syarat = "ID Card";
         } else if (marriage_book == 1) {
-          syarat = "Buku Nikah";
+          syarat = "Marriage Certificate";
         }
 
         var mushalla_stat = "-";
         if (mushalla == 1) {
-          mushalla_stat = "Ada Mushalla"
+          mushalla_stat = "Exist"
         };
 
         $('#view_rekom_table').append("<tr><td style='text-align:left'><b style='font-size:20px'>"+name+"</b><br>Address: "+address+"<br>Cp: "+cp+"<br>Syarat Menginap: "+syarat+"<br>Mushalla: "+mushalla_stat+"<br>Tipe Hotel: "+type_hotel+"</td><td><a role='button' class='btn btn-success' onclick='set_center(\""+lat+"\",\""+lon+"\",\""+name+"\")'>Position</a></td></tr>");

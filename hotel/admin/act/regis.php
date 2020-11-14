@@ -91,7 +91,7 @@ $homepage = file_get_contents("../../../mailtemplate.php");
     </div>
     <div id='badan'>
       <p>Click the link below to verify your account</p>
-      <a href='https://gissurya.org/hotel_bkt/admin/pages/verifikasi.php?token=$token&user=$username'>Click on this link to confirm your email</a> <!-- EDIT UNTUK HOSTING -->
+      <a href='https://gissurya.org/hotel/admin/pages/verifikasi.php?token=$token&user=$username'>Click on this link to confirm your email</a> <!-- EDIT UNTUK HOSTING -->
     </div>
     <div id='kaki'>
       <h3>Have A Nice Day, $username !</h3>
