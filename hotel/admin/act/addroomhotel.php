@@ -9,12 +9,11 @@ else {$idmax++;}
 $idmax2 = $idmax;
 
 $room = $_POST['nama_kamar'];
-$tipe = $_POST['tipe_kamar'];
 $harga = $_POST['harga_kamar'];
 $available = $_POST['kamar_available'];
 $kamarsisa = $_POST['kamar_sisa'];
 
-$sql = "INSERT into detail_room (id_room, id_hotel, name, price, id_type, available, sisa) values ('$idmax','$id','$room','$harga','$tipe','$available','$kamarsisa')";
+$sql = "INSERT into detail_room (id_room, id_hotel, name, price, available, sisa) values ('$idmax','$id','$room','$harga','$available','$kamarsisa')";
 $insert = mysqli_query($conn, $sql);
 
 if ($insert){

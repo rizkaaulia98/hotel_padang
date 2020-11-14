@@ -556,7 +556,6 @@ $.ajax({url: server+'_data_hotel_1.php?cari='+ids, data: "", dataType: 'json', s
     var row = rows.kamar[i];
     var id_room = row.id_room;
     var id_hotel = row.id_hotel;
-    var id_type = row.id_type;
     var name = row.name;
     var price = row.price;
     var available = row.available;
@@ -1124,7 +1123,6 @@ $.ajax({url: server+'_data_hotel_1.php?cari='+id, data: "", dataType: 'json', su
   for (var i in rows.kamar){
     var row = rows.kamar[i];
     var id_room = row.id_room;
-    var id_type = row.id_type;
     var id_hote = row.id_hotel;
     var name = row.name;
     var available = row.available;
@@ -1518,19 +1516,19 @@ $.ajax({url: server+'_data_restaurant_1.php?cari='+id, data: "", dataType: 'json
     var lng = row.longitude;
 
     if (mushalla == 1) {
-      mushalla = "Ada";
+      mushalla = "Exist";
     }else{
-      mushalla = "Tidak ada"
+      mushalla = "None"
     }
     if (park_area == 1) {
-      park_area = "Ada";
+      park_area = "Exist";
     }else{
-      park_area = "Tidak ada"
+      park_area = "None"
     }
     if (bathroom == 1) {
-      bathroom = "Ada";
+      bathroom = "Exist";
     }else{
-      bathroom = "Tidak ada"
+      bathroom = "None"
     }
 
     console.log(name);

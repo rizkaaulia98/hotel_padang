@@ -41,18 +41,16 @@ $cari = $_GET["cari"];	//ID
     }
 
     //DATA KAMAR
-    $query_kamar="SELECT detail_room.*, room.name as type from detail_room left join room using (id_type) where id_hotel = '".$cari."' ";
+    $query_kamar="SELECT detail_room.* from detail_room where id_hotel = '".$cari."' ";
     $hasil4=mysqli_query($conn, $query_kamar);
     while($baris = mysqli_fetch_array($hasil4)){
         $id_room=$baris['id_room'];
 				$id_hotel=$baris['id_hotel'];
-				$id_type=$baris['id_type'];
-				$type=$baris['type'];
 				$available=$baris['available'];
 				$name=$baris['name'];
         $price=$baris['price'];
 				$sisa=$baris['sisa'];
-        $data_kamar[]=array('id_room'=>$id_room, 'id_hotel'=>$id_hotel, 'type'=>$type, 'id_type'=>$id_type, 'available'=>$available, 'name'=>$name,'price'=>$price,'sisa'=>$sisa);
+        $data_kamar[]=array('id_room'=>$id_room, 'id_hotel'=>$id_hotel, 'available'=>$available, 'name'=>$name,'price'=>$price,'sisa'=>$sisa);
     }
 
 

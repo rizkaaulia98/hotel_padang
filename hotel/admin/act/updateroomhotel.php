@@ -6,10 +6,9 @@ $name = $_GET['nama_kamar'];
 $price = $_GET['harga_kamar'];
 $available = $_GET['kamar_available'];
 $sisa = $_GET['kamar_sisa'];
-$id_type= $_GET['tipe_kamar'];
 
 
-$sql  = "UPDATE detail_room set name='$name', price = '$price', available = '$available', id_type = '$id_type', id_room = '$id_room', sisa = '$sisa' where id_room='$id_room'";
+$sql  = "UPDATE detail_room set name='$name', price = '$price', available = '$available', id_room = '$id_room', sisa = '$sisa' where id_room='$id_room'";
 $update = mysqli_query($conn, $sql);
 
 if ($update){

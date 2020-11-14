@@ -25,17 +25,17 @@ while($baris = mysqli_fetch_array($hasil)){
 
 	$syarat="-";
 	if ($ktp == 1 && $marriage_book == 1) {
-	  $syarat = "KTP & Buku Nikah";
+	  $syarat = "ID Card & Marriage Certificate";
 	}
 	else if ($ktp == 1) {
-	  $syarat = "KTP";
+	  $syarat = "ID Card";
 	} else if ($marriage_book == 1) {
-	  $syarat = "Buku Nikah";
+	  $syarat = "Marriage Certificate";
 	}
 
 	$mushalla_stat = "-";
 	if ($mushalla == 1) {
-	  $mushalla_stat = "Ada Mushalla";
+	  $mushalla_stat = "Exist";
 	};
 
 //DATA FASILITAS
@@ -88,7 +88,6 @@ while($baris = mysqli_fetch_array($hasil3)){
                <thead >
                  <tr class="w3-teal">
                    <th style="text-align: center;">Room Name</th>
-                   <th style="text-align: center;">Type</th>
                    <th style="text-align: center;">Price</th>
                    <th style="text-align: center;">Available</th>
                    <th style="text-align: center;">Actions</th>
@@ -98,13 +97,11 @@ while($baris = mysqli_fetch_array($hasil3)){
                  <?php
                  // $room;
                  // $harga;
-                 $query_kamar=mysqli_query($conn, "SELECT room.name as type, detail_room.* FROM detail_room left join room using(id_type) right join hotel on hotel.id = detail_room.id_hotel where hotel.id = '".$id."' ");
+                 $query_kamar=mysqli_query($conn, "SELECT detail_room.* FROM detail_room right join hotel on hotel.id = detail_room.id_hotel where hotel.id = '".$id."' ");
                  while($data = mysqli_fetch_array($query_kamar)){
                      $name=$data['name'];
                      $id_room = $data['id_room'];
                      $id_hotel = $data['id_hotel'];
-                     $id_type = $data['id_type'];
-                     $type=$data['type'];
                      $price=$data['price'];
                      $available=$data['available'];
                      $sisa = $data['sisa'];
@@ -112,7 +109,6 @@ while($baris = mysqli_fetch_array($hasil3)){
                      ?>
                      <tr id="<?php echo $data['id_room'];?>" >
                        <td><?php echo $name; ?></td>
-                       <td><?php echo $type; ?></td>
                        <td><?php echo $price; ?></td>
                        <td style="text-align: center;"><?php echo $sisa; ?></td>
                        <td>
@@ -127,7 +123,7 @@ while($baris = mysqli_fetch_array($hasil3)){
                        <div class="modal-dialog" role="document">
                          <div class="modal-content">
                            <div class="modal-header">
-                             <h5 class="modal-title">Update Data Facility</h5>
+                             <h5 class="modal-title">Update Room</h5>
                              <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                                <span aria-hidden="true">×</span>
                              </button>
@@ -139,38 +135,15 @@ while($baris = mysqli_fetch_array($hasil3)){
                                    <input type="text" name="nama_kamar" class="form-control" value="<?php echo $name;?>">
                                  </div>
                                  <div class="form-group">
-                                   <label>Room Type</label>
-                                   <select name="tipe_kamar" id="tipe_kamar" class="form-control">
-                                     <option value="null"> </option>
-
-                               <?php
-                               $room=mysqli_query($conn, "SELECT * from room");
-
-                               while($rm = mysqli_fetch_assoc($room))
-                               {
-                                 if ($data['id_type']==$rm['id_type'])
-                                   {
-                                     echo "<option value='$rm[id_type]' selected>$rm[name]</option>";
-                                   }
-                                   else
-                                   {
-                                     echo"<option value='$rm[id_type]'>".$rm['name']."</option>";
-                                   }
-                                 }
-                               ?>
-
-                                   </select>
-                                 </div>
-                                 <div class="form-group">
                                    <label>Room Price</label>
                                    <input type="text" name="harga_kamar" class="form-control" value="<?php echo $price; ?>">
                                  </div>
                                  <div class="form-group">
-                                   <label>Room Available</label>
+                                   <label>Rooms Available</label>
                                    <input type="number" name="kamar_available" class="form-control" value="<?php echo $available;?>">
                                  </div>
                                  <div class="form-group">
-                                   <label>Room Available</label>
+                                   <label>Remaining Rooms</label>
                                    <input type="number" name="kamar_sisa" class="form-control" value="<?php echo $sisa;?>">
                                  </div>
 
@@ -429,29 +402,15 @@ while($baris = mysqli_fetch_array($hasil3)){
             <input type="text" name="nama_kamar" class="form-control" value="">
           </div>
           <div class="form-group mb-3">
-            <label>Room Type</label>
-            <select  name="tipe_kamar"  id="tipe_kamar" class="form-control">
-        <option value='0'></option>
-                <?php
-                $room=mysqli_query($conn, "SELECT * from room ");
-                while($rm = mysqli_fetch_assoc($room))
-                {
-                echo"<option value=".$rm['id_type'].">".$rm['name']."</option>";
-                }
-                ?>
-
-            </select>
-          </div>
-          <div class="form-group mb-3">
             <label>Room Price</label>
             <input type="text" name="harga_kamar" class="form-control" value="">
           </div>
           <div class="form-group mb-3">
-            <label>Rooms</label>
+            <label>Rooms Available</label>
             <input type="number" name="kamar_available" class="form-control" value="">
           </div>
           <div class="form-group mb-3">
-            <label>Room Available</label>
+            <label>Remaining Rooms</label>
             <input type="number" name="kamar_sisa" class="form-control" value="">
           </div>
           <div class="modal-footer">

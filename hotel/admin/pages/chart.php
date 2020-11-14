@@ -119,7 +119,7 @@ ul.tabs li a.active {
 
            <div id="Interest" class="w3-container w3-border chart" style="display:none">
              <br><p style="background-color: lightgrey; width:auto;">This count how many users that visit the specific hotel page in the past week</p><br>
-             <iframe width="600" height="371" seamless frameborder="2" scrolling="no" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRutH6ScqllsXquQEPDB2q6ZoCdwths-WIv6P_oT0KebfvkHTZRWl8Z8XXsuWyzB14rdf2zC-T88ejA/pubchart?oid=1603367294&amp;format=interactive"></iframe>
+             <iframe width="600" height="371" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRutH6ScqllsXquQEPDB2q6ZoCdwths-WIv6P_oT0KebfvkHTZRWl8Z8XXsuWyzB14rdf2zC-T88ejA/pubchart?oid=2067279253&amp;format=interactive"></iframe>
            </div>
 
            <div id="Region" class="w3-container w3-border chart" style="display:none">
