@@ -22,9 +22,15 @@
       </a>
   </li>
   <li class="sub-menu">
+      <a href="?page=setpopular">
+          <i class="fa fa-star"></i>
+          <span>Popular Hotel</span>
+      </a>
+  </li>
+  <li class="sub-menu">
       <a href="?page=fasilitas">
           <i class="fa fa-lightbulb-o"></i>
-          <span>Facility</span>
+          <span>Facilities</span>
       </a>
   </li>
   <!-- <li class="sub-menu">

@@ -21,6 +21,7 @@ include("../../connect.php");
     <link rel="stylesheet" type="text/css" href="../assets/js/gritter/css/jquery.gritter.css" />
     <link rel="stylesheet" type="text/css" href="../assets/lineicons/style.css">
 		<link type="text/css" href="../assets/css/icomoon/styles.css" rel="stylesheet">
+		<link type="text/css" href="../assets/fontawesome/css/fontawesome.css" rel="stylesheet">
     <link type="text/css" href="../assets/css/style.css" rel="stylesheet">
     <link type="text/css" href="../assets/css/style-responsive.css" rel="stylesheet">
 	  <script src="inc/script.js" type="text/javascript"></script>
@@ -73,6 +74,7 @@ include("../../connect.php");
 
 <script src="../assets/js/jquery.js"></script>
 <script src="../assets/js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="jquery-1.4.2.min.js"></script>
 <script src="../assets/js/bootstrap.min.js"></script>
 <script class="include" type="text/javascript" src="../assets/js/jquery.dcjqaccordion.2.7.js"></script>
 <script src="../assets/js/jquery.scrollTo.min.js"></script>

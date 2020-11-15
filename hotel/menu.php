@@ -13,10 +13,16 @@
                     <p class="centered"><a href="index.php"><img src="../_foto/2.jpeg" class="img-circle" width="80"></a></p>
                     <h5 class="centered">Hello, Visitor!</h5>
                   <?php } ?>
+
+                  <li class="sub">
+                      <a onclick="" style="cursor:pointer;background:none"><i class="fa fa-info-circle"></i>About Hotel in Padang</a>
+                  </li>
 <!-- list hotel -->
                   <li class="sub">
                       <a onclick="init();listHotel();" style="cursor:pointer;background:none"><i class="fa fa-list-ul"></i>List Hotel</a>
                   </li>
+
+
 <!-- end list hotel -->
 
 <!-- hotel around you -->
