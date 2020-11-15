@@ -22,9 +22,9 @@
       </a>
   </li>
   <li class="sub-menu">
-      <a href="?page=setpopular">
+      <a href="?page=setRecommendation">
           <i class="fa fa-star"></i>
-          <span>Popular Hotel</span>
+          <span>Set Recommendations</span>
       </a>
   </li>
   <li class="sub-menu">

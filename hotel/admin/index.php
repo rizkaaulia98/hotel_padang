@@ -17,16 +17,16 @@ include("../../connect.php");
     <link href="../assets/css/bootstrap.css" rel="stylesheet">
 	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link href="../assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" href="../assets/css/zabuto_calendar.css">
+    <!-- <link rel="stylesheet" type="text/css" href="../assets/css/zabuto_calendar.css">
     <link rel="stylesheet" type="text/css" href="../assets/js/gritter/css/jquery.gritter.css" />
-    <link rel="stylesheet" type="text/css" href="../assets/lineicons/style.css">
+    <link rel="stylesheet" type="text/css" href="../assets/lineicons/style.css"> -->
 		<link type="text/css" href="../assets/css/icomoon/styles.css" rel="stylesheet">
-		<link type="text/css" href="../assets/fontawesome/css/fontawesome.css" rel="stylesheet">
+		<link type="text/css" href="../assets/font-awesome/css/fontawesome.css" rel="stylesheet">
     <link type="text/css" href="../assets/css/style.css" rel="stylesheet">
     <link type="text/css" href="../assets/css/style-responsive.css" rel="stylesheet">
 	  <script src="inc/script.js" type="text/javascript"></script>
 	  <link href="plugins/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css" />
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyANIx4N48kL_YEfp-fVeWmJ_3MSItIP8eI&callback=initialize&libraries=drawing"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyANIx4N48kL_YEfp-fVeWmJ_3MSItIP8eI&callback=initialize"></script>
     <!-- <script src="../assets/js/chart-master/Chart.js"></script> -->
     <!-- <link rel="stylesheet" type="text/css" href="../assets/js/bootstrap-fileupload/bootstrap-fileupload.css" /> -->
     <!-- <link rel="stylesheet" type="text/css" href="../assets/js/bootstrap-datepicker/css/datepicker.css" />
@@ -73,8 +73,8 @@ include("../../connect.php");
   </section>
 
 <script src="../assets/js/jquery.js"></script>
-<script src="../assets/js/jquery-1.8.3.min.js"></script>
-<script type="text/javascript" src="jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="../assets/js/jquery-1.8.3.min.js"></script>
+<!-- <script type="text/javascript" src="jquery-1.4.2.min.js"></script> -->
 <script src="../assets/js/bootstrap.min.js"></script>
 <script class="include" type="text/javascript" src="../assets/js/jquery.dcjqaccordion.2.7.js"></script>
 <script src="../assets/js/jquery.scrollTo.min.js"></script>
@@ -83,8 +83,8 @@ include("../../connect.php");
 <script src="plugins/datatables/jquery.dataTables.js" type="text/javascript"></script>
 <script src="plugins/datatables/dataTables.bootstrap.js" type="text/javascript"></script>
 <script src="../assets/js/common-scripts.js"></script>
-<script type="text/javascript" src="../assets/js/gritter/js/jquery.gritter.js"></script>
-<script type="text/javascript" src="../assets/js/gritter-conf.js"></script>
+<!-- <script type="text/javascript" src="../assets/js/gritter/js/jquery.gritter.js"></script>
+<script type="text/javascript" src="../assets/js/gritter-conf.js"></script> -->
 <script src="../assets/js/jquery-ui-1.9.2.custom.min.js"></script>
 <!-- <script type="text/javascript" src="../assets/js/bootstrap-fileupload/bootstrap-fileupload.js"></script> -->
 <!-- <script type="text/javascript" src="../assets/js/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>

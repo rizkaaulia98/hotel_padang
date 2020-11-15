@@ -228,12 +228,12 @@ function resizingMap() {
    map.setCenter(center);
 }
 
-// To hide:
-drawingManager.setOptions({
-  drawingControl: false
-});
-
-// To show:
-drawingManager.setOptions({
-  drawingControl: true
-});
+// // To hide:
+// drawingManager.setOptions({
+//   drawingControl: false
+// });
+//
+// // To show:
+// drawingManager.setOptions({
+//   drawingControl: true
+// });
