@@ -499,6 +499,7 @@ $.ajax({url: server+'_data_hotel_1.php?cari='+ids, data: "", dataType: 'json', s
     var address = row.address;
     var cp = row.cp;
     var ktp = row.ktp;
+    var status = row.status;
     var marriage_book = row.marriage_book;
     var mushalla = row.mushalla;
     var type_hotel = row.type_hotel;
@@ -776,6 +777,63 @@ function listHotel(){ // Menu Hotel
     }
   });
 
+}
+
+// **********************************************************************************************************************************************************
+// **********************************************************************************************************************************************************
+// ***********************************************************Hotel Recommendations**************************************************************************
+// **********************************************************************************************************************************************************
+// **********************************************************************************************************************************************************
+function rec_hotel(tipe){ // PENCARIAN hotel recom
+  console.log("menu jalan")
+  hapus_menu();
+  hapus_Semua();
+  // DEKLARASI
+  if (tipe == 1) {
+    document.getElementById('judul_table').innerHTML="Results of Star Hotel Recommendations";
+  } else if (tipe == 2) {
+    document.getElementById('judul_table').innerHTML="Results of Budget Hotel Recommendations";
+  } else if (tipe == 3) {
+    document.getElementById('judul_table').innerHTML="Results of Syariah Hotel Recommendations";
+  }else if (tipe == 4) {
+    document.getElementById('judul_table').innerHTML="Results of Hotel With Best View";
+  }
+
+    $("#view_rec_table").show();
+    $('#rec_table').empty();
+    // $('#galleryrecommendxxx').hide();
+
+
+  $('#rec_table').append("<tr><th class='centered'>Name</th><th class='centered' colspan='3'>Action</th></tr>");
+  console.log(server+'_reco.php?tipe='+tipe);
+  $.ajax({url: server+'_reco.php?tipe='+tipe, data: "", dataType: 'json', success: function(rows){
+    if(rows == null)
+    {
+      alert('Data Did Not Exist !');
+      $("#view_rec_table").hide();
+    }
+      for (var i in rows){
+        var row = rows[i];
+        var id = row.id;
+        var name = row.name;
+        var lng = row.lng;
+        var lat = row.lat;
+        $('#rec_table').append("<tr><td>"+name+"</td><td><a role='button' class='btn btn-success fa fa-info' onclick='data_hotel_1_info(\""+id+"\")'></a></td><td><a role='button' class='btn btn-danger fa fa-taxi' title='Angkot' onclick='angkot_sekitar(\""+id+"\")'></a></td></tr>");
+
+        //MARKER
+        centerBaru = new google.maps.LatLng(lat, lng);
+        map.setCenter(centerBaru);
+        map.setZoom(10);
+        var marker = new google.maps.Marker({
+          position: centerBaru,
+          icon:'icon/marker_hotel.png',
+          animation: google.maps.Animation.DROP,
+          map: map
+          });
+        markersDua.push(marker);
+        klikInfoWindow(id,marker);
+      }//end for
+  }});//end ajax
 }
 
 

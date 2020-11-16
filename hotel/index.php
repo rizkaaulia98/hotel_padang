@@ -396,35 +396,112 @@ session_start();
                       </div><!-- /col-md-12 -->
                   </div><!-- /row -->
 
-                  <!--REKOMENDASI HOTEL-->
-                  <div id="view_rekom" class="row" style="display:none;color:black">
-                      <div class="col-md-12 col-sm-12 mb">
-                        <div class="white-panel pns">
-                           <div style="margin:0px 20px 10px 20px">
-                             <h5 class="btn btn-compose" >Hotel Recommendations</h5>
-                           </div>
-                           <div class="row centered">
-                             <div class="col-sm-1 col-xs-1"></div>
-                             <div class="col-sm-10 col-xs-10">
-                              <!--table class="table table-hover" id='view_rekom_table'></table-->
-                              <table class="table table-bordered">
-                                <tbody id="view_rekom_table" style='color:black'></tbody>
-                              </table>
-                             </div>
-                             <div class="col-sm-1 col-xs-1"></div>
-                           </div>
-                        </div>
-                      </div><!-- /col-md-12 -->
-                  </div><!-- /row -->
-
                 </div><!-- /col-lg-9 END SECTION MIDDLE -->
 
+                <!-- GALLERY RECOMMENDATION -->
+      <div class="row" style="font-family: arial;"  id="galleryrecommendxxx">
+        <div  class="col-lg-4 main-chart">
+          <div class="row">
+            <div class="col-sm-12 col-sm-12 mb">
+              <div class="white-panel pns" style="height: auto; width: auto; padding-bottom: 10px" >
+                <header class="panel-heading" style=" width: 100%;">
+                  <!-- <h4 style="color: #26a69a;"><b>Recommendation</b></h4>
+                  <hr> -->
+                </header>
+
+                <div style="height: 330px;">
+                <!-- <br>  -->
+                <!-- HOTEL -->
+                <div style="margin: 10px;" id="hotelxxx">
+                  <h4 style="color: black"> Hotel Recommendations</h4>
+                  <hr>
+                  <div id="myCarousel3" class="carousel slide" data-ride="carousel" style="margin: 5px;  border-color: grey">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators" style="bottom: 15px; font-size: 5px">
+                      <li data-target="#myCarousel3" data-slide-to="0" class="active"></li>
+                      <li data-target="#myCarousel3" data-slide-to="1"></li>
+                      <li data-target="#myCarousel3" data-slide-to="2"></li>
+                      <li data-target="#myCarousel3" data-slide-to="3"></li>
+                      <li data-target="#myCarousel3" data-slide-to="4"></li>
+                    </ol>
+
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner">
+                      <div class="item active">
+                        <img src="../_foto/we_hot.jpeg" style="width:100%;">
+                        <div class="carousel-caption" style="bottom: 10px; ">
+                          <b> Padang</b><br>
+                          <font style="font-size: 12px; text-align: center">Hotel Recommended in Padang</font>
+                        </div>
+                      </div>
+
+                          <div class="item" style="background-color: #efefef; padding: 10px">
+                            <img src="../_foto/star.jpg" style="width:100%;" onclick="rec_hotel(1);">
+                            <div class="carousel-caption" style="bottom: 5px" onclick="rec_hotel(1);">
+                              <a style="color: white" ><b>Star Hotel Recommendations</b></a><br>
+                            </div>
+                          </div>
+                          <div class="item" style="background-color: #efefef; padding: 10px">
+                            <img onclick="rec_hotel(2);" src="../_foto/budget.jpg" style="width:100%;">
+                            <div class="carousel-caption" style="bottom: 5px" onclick="rec_hotel(2);">
+                              <a style="color: white" ><b>Budget Hotel Recommendations</b></a><br>
+                            </div>
+                          </div>
+                          <div class="item" style="background-color: #efefef; padding: 10px">
+                            <img src="../_foto/syariah.jpg" style="width:100%;" onclick="rec_hotel(3);">
+                            <div class="carousel-caption" style="bottom: 5px" onclick="rec_hotel(3);">
+                              <a style="color: white" ><b>Syariah Hotel Recommendations</b></a><br>
+                            </div>
+                          </div>
+                          <div class="item" style="background-color: #efefef; padding: 10px">
+                            <img src="../_foto/view.jpg" style="width:100%;" onclick="rec_hotel(4);">
+                            <div class="carousel-caption" style="bottom: 5px" onclick="rec_hotel(4);">
+                              <a style="color: white" ><b>Hotel with Best View</b></a><br>
+                            </div>
+                          </div>
+
+                    </div>
+                    <!-- Left and right controls -->
+                    <a class="left carousel-control" href="#myCarousel3" data-slide="prev">
+                      <span class="glyphicon glyphicon-chevron-left"></span>
+                      <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#myCarousel3" data-slide="next">
+                      <span class="glyphicon glyphicon-chevron-right"></span>
+                      <span class="sr-only">Next</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- table list rekom -->
+        <div id="view_rec_table" class="col-md-4 col-sm-4 mb" style="margin-top:0px; display:none;">
+          <div class="white-panel pns" style="height:510px">
+             <div class="white-header" style="height:40px;margin:20px;background:white;color:black">
+               <h5 class="btn btn-compose" id="judul_table">Results</h5>
+             </div>
+             <div class="row">
+               <div class="col-sm-6 col-xs-6"></div>
+             </div>
+             <div style="height:410px; overflow-y: scroll; margin:20px;">
+                <table style="color:black" class="table table-bordered">
+                  <!-- <tr id="kanan_table1"></tr> -->
+                  <tbody id='rec_table'></tbody>
+                </table>
+             </div>
+          </div>
+        </div><!-- /col-md-12 -->
+    </div>
 
       <!-- **********************************************************************************************************************************************************
       RIGHT SIDEBAR CONTENT
       *********************************************************************************************************************************************************** -->
 
                     <!-- DATA TABLE -->
+                    <!-- list hotel -->
                       <div id="view_kanan_table" class="col-md-4 col-sm-4 mb" style="margin-top:0px; display:none;">
                         <div class="white-panel pns" style="height:510px">
                            <div class="white-header" style="height:40px;margin:20px;background:white;color:black">
@@ -459,95 +536,7 @@ session_start();
                         </div>
                       </div>
 
-                      <!-- GALLERY RECOMMENDATION -->
-            <div class="row" style="font-family: arial;"  id="galleryrecommendxxx">
-              <div  class="col-lg-4 main-chart">
-                <div class="row">
-                  <div class="col-sm-12 col-sm-12 mb">
-                    <div class="white-panel pns" style="height: auto; width: auto; padding-bottom: 10px" >
-                      <header class="panel-heading" style=" width: 100%;">
-                        <!-- <h4 style="color: #26a69a;"><b>Recommendation</b></h4>
-                        <hr> -->
-                      </header>
-                      <?php
-                        require '../connect.php';
-                        //HOTEL
-                        $gallery_hot = "SELECT hotel.address, hotel.id as id, hotel.name as namahotel, ST_X(ST_Centroid(hotel.geom)) AS lng, ST_Y(ST_CENTROID(hotel.geom))
-                        As lat, hotel_gallery.gallery_hotel, avg(review.rating) as rate from hotel left join hotel_gallery on hotel.id= hotel_gallery.id
-                        left join review on hotel.id=review.id_hotel where hotel.id IN(SELECT DISTINCT hotel.id
-                          FROM detail_facility_hotel JOIN hotel on detail_facility_hotel.id_hotel=hotel.id
-                          WHERE detail_facility_hotel.id_facility = 18 or detail_facility_hotel.id_facility = 32 or detail_facility_hotel.id_facility = 15 or detail_facility_hotel.id_facility = 33
-                          or detail_facility_hotel.id_facility = 12) and hotel_gallery.serial_number=1 group by hotel_gallery.id having avg(review.rating)>=3 ";
-                        $result3 = mysqli_query($conn, $gallery_hot);
-                        $namahotel=['namahotel'];
-                        $alamat = ['address'];
-                        $rating = ['rate'];
 
-                      ?>
-
-                      <div style="height: 330px; overflow-y: scroll; ">
-                      <!-- <br>  -->
-                      <!-- HOTEL -->
-                      <div style="margin: 10px;" id="hotelxxx">
-                        <h4 style="color: black"> Popular Hotel</h4>
-                        <hr>
-                        <div id="myCarousel3" class="carousel slide" data-ride="carousel" style="margin: 5px;  border-color: grey">
-                          <!-- Indicators -->
-                          <ol class="carousel-indicators" style="bottom: 15px; font-size: 5px">
-                            <li data-target="#myCarousel3" data-slide-to="0" class="active"></li>
-                            <li data-target="#myCarousel3" data-slide-to="1"></li>
-                            <li data-target="#myCarousel3" data-slide-to="2"></li>
-                            <li data-target="#myCarousel3" data-slide-to="3"></li>
-                            <li data-target="#myCarousel3" data-slide-to="4"></li>
-                          </ol>
-
-                          <!-- Wrapper for slides -->
-                          <div class="carousel-inner">
-                            <div class="item active">
-                              <img src="../_foto/we_hot.jpeg" style="width:100%;">
-                              <div class="carousel-caption" style="bottom: 10px; ">
-                                <b> Padang</b><br>
-                                <font style="font-size: 12px; text-align: center">Hotel Recommended in Padang</font>
-                              </div>
-                            </div>
-                            <?php
-                              while ($rows = mysqli_fetch_array($result3))
-                              {
-                                $id_hot = $rows['id'];
-                                $alamat_hot = $rows['address'];
-                                $gambar_hot = $rows['gallery_hotel'];
-                                $name_hot = $rows['namahotel'];
-
-                                ?>
-                                <div class="item" style="background-color: #efefef; padding: 10px">
-                                  <a href="" onclick="galleryreco('<?php echo $id_hot ?>')"><img src="../_foto/<?php echo $gambar_hot ?>" style="width:100%;"> </a>
-                                  <div class="carousel-caption" style="bottom: 10px" onclick="galleryreco('<?php echo $id_hot ?>')">
-                                    <a style="color: white" ><b><?php echo $name_hot ?></b></a><br>
-                                    
-                                    <!-- <p>LA is always so much fun!</p> -->
-                                  </div>
-                                </div>
-                                <?php
-                              }
-                            ?>
-                          </div>
-                          <!-- Left and right controls -->
-                          <a class="left carousel-control" href="#myCarousel3" data-slide="prev">
-                            <span class="glyphicon glyphicon-chevron-left"></span>
-                            <span class="sr-only">Previous</span>
-                          </a>
-                          <a class="right carousel-control" href="#myCarousel3" data-slide="next">
-                            <span class="glyphicon glyphicon-chevron-right"></span>
-                            <span class="sr-only">Next</span>
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
                     <!-- DATA TABLE OBJEK SEKITAR-->
                       <div id="view_table_sekitar" class="col-md-4 col-sm-4 mb" style="display:none">
                         <div class="white-panel pns" style="height:510px">

@@ -12,14 +12,15 @@ $cari = $_GET["cari"];	//ID
 		  $name=$baris['name'];
 		  $address=$baris['address'];
 		  $cp=$baris['cp'];
-		  $ktp=$baris['ktp'];
+			$ktp=$baris['ktp'];
+		  $status=$baris['status'];
 		  $marriage_book=$baris['marriage_book'];
 		  $mushalla=$baris['mushalla'];
 		  $type_hotel=$baris['type_hotel'];
 		  $lat=$baris['lat'];
 		  $lng=$baris['lon'];
 
-	  $dataarray[]=array('id'=>$id,'name'=>$name,'address'=>$address,'cp'=>$cp, 'ktp'=>$ktp, 'marriage_book'=>$marriage_book, 'mushalla'=>$mushalla, 'type_hotel'=>$type_hotel,'lng'=>$lng,'lat'=>$lat);
+	  $dataarray[]=array('id'=>$id,'name'=>$name,'address'=>$address,'cp'=>$cp, 'ktp'=>$ktp, 'status'=>$status, 'marriage_book'=>$marriage_book, 'mushalla'=>$mushalla, 'type_hotel'=>$type_hotel,'lng'=>$lng,'lat'=>$lat);
 	}
 
 	//DATA GALLERY

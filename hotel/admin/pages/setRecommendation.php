@@ -56,7 +56,15 @@
             <tr>
               <td><?php echo $no; ?></td>
               <td><?php echo $name; ?></td>
-              <td><?php echo $status; ?></td>
+              <?php if ($status == "P1") { ?>
+                <td><?php echo $status."-Star Hotel Recommended"; ?></td>
+          <?php }elseif ($status=="P2") { ?>
+                <td><?php echo $status."-Budget Hotel Recommended"; ?></td>
+        <?php  }elseif ($status=="P3") { ?>
+                <td><?php echo $status."-Syariah Hotel Recommended"; ?></td>
+        <?php }elseif ($status == "4") { ?>
+                <td><?php echo $status."-Hotel with Best View Recommended"; ?></td>
+        <?php } ?>
             </tr>
       <?php    } ?>
 
@@ -93,7 +101,15 @@
             <tr>
               <td><?php echo $no; ?></td>
               <td><?php echo $name; ?></td>
-              <td><?php echo $status; ?></td>
+              <?php if ($status == "P1") { ?>
+                <td><?php echo $status."-Star Hotel Recommended"; ?></td>
+          <?php }elseif ($status=="P2") { ?>
+                <td><?php echo $status."-Budget Hotel Recommended"; ?></td>
+        <?php  }elseif ($status=="P3") { ?>
+                <td><?php echo $status."-Syariah Hotel Recommended"; ?></td>
+        <?php }elseif ($status == "4") { ?>
+                <td><?php echo $status."-Hotel with Best View Recommended"; ?></td>
+        <?php } ?>
             </tr>
       <?php    } ?>
 
