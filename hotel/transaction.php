@@ -46,58 +46,7 @@ session_start();
 
 
 <style type="text/css">
-      #legend {
-        background: white;
-        padding: 10px;
-        margin: 5px;
-        font-size: 12px;
-        font-color: black;
-        font-family: Arial, sans-serif;
 
-    }
-    .color {
-        border: 1px solid;
-        height: 12px;
-        width: 12px;
-        margin-right: 3px;
-        float: left;
-    }
-    .a {
-        background: #f58d6f;
-      }
-    .b {
-        background: #f58d6f;
-      }
-      .c {
-        background: #fce8b7;
-      }
-    .d {
-        background: #00b300;
-      }
-    .e {
-        background: #42cb6f;
-      }
-    .f {
-        background: #5c9ded;
-      }
-    .g {
-        background: #373435;
-      }
-    .h {
-        background: #d51e5a;
-      }
-    .i {
-        background: #9398ec;
-      }
-    .j {
-        background: #f9695d;
-      }
-    .k {
-        background: #ec87bf;
-      }
-    .l {
-        background: navy;
-      }
    </style>
     <!--LOADER-->
     <style>
@@ -143,84 +92,6 @@ session_start();
 
   <body>
   <section id="container" >
-
-      <!-- Modal -->
-      <div class="modal fade" id="modal_gallery" role="dialog">
-        <div class="modal-dialog">
-
-          <!-- Modal content-->
-          <div class="modal-content">
-            <div class="modal-header" style="background:#ffd777">
-              <button type="button" class="close" data-dismiss="modal">&times;</button>
-              <h4 class="modal-title" id="mg_title">Modal Header</h4>
-            </div>
-            <div class="modal-body" id="mg_body">
-
-                <!--GALERY-->
-                <div id="view_galery" class="row" style="display:none">
-                    <div class="col-md-12 col-sm-12 mb">
-                       <div class="row centered" style="padding:10px">
-                         <div class="col-sm-1 col-xs-1"></div>
-                         <div id="gal" class="col-sm-10 col-xs-10" style="height:300px;">
-                            <!--img class="img-responsive" src="assets/img/ny.jpg" style="width:100%;height:100%;"-->
-
-                            <div class="w3-content w3-display-container" style="max-height:300px;max-width:600px">
-                              <div id="img_gambar">
-
-                              </div>
-
-                              <div class="w3-center w3-container w3-section w3-large w3-text-white w3-display-bottommiddle" style="width:100%">
-                                <div class="col-md-6 col-sm-6 mb">
-                                    <div class="w3-left w3-hover-text-khaki" onclick="plusDivs(-1)">&#10094;</div>
-                                </div>
-                                <div class="col-md-6 col-sm-6 mb">
-                                    <div class="w3-right w3-hover-text-khaki" onclick="plusDivs(1)">&#10095;</div>
-                                </div>
-                                <div id="span_gambar">
-
-                                </div>
-                              </div>
-                            </div>
-
-                         </div>
-                         <div class="col-sm-1 col-xs-1"></div>
-                       </div>
-                    </div><!-- /col-md-12 -->
-                </div><!-- /row -->
-
-                <div class="col-md-12 col-sm-12 mb" style="margin-top:10px">
-                  <p id="mg_text" ></p>
-                </div><!-- /col-md-12 -->
-
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-
-      <!-- Modal -->
-      <div class="modal fade" id="myModal" role="dialog">
-        <div class="modal-dialog">
-
-          <!-- Modal content-->
-          <div class="modal-content">
-            <div class="modal-header" style="background:#ffd777">
-              <button type="button" class="close" data-dismiss="modal">&times;</button>
-              <h4 class="modal-title" id="modal_title">Modal Header</h4>
-            </div>
-            <div class="modal-body" id="modal_body">
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
-          </div>
-
-        </div>
-      </div>
 
       <!-- **********************************************************************************************************************************************************
       TOP BAR CONTENT & NOTIFICATIONS

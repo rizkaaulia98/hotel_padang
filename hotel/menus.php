@@ -19,7 +19,7 @@
                   </li>
 <!-- list hotel -->
                   <li class="sub">
-                      <a onclick="init();listHotel();" style="cursor:pointer;background:none"><i class="fa fa-list-ul"></i>List Hotel</a>
+                      <a href="index.php" onclick="init();listHotel();" style="cursor:pointer;background:none"><i class="fa fa-list-ul"></i>List Hotel</a>
                   </li>
 
 
@@ -27,22 +27,8 @@
 
 <!-- hotel around you -->
                   <li class="sub">
-                      <a onclick="" style="cursor:pointer;background:none"><i class="fa fa-compass"></i>Hotel Around You</a>
+                      <a href="index.php" onclick="" style="cursor:pointer;background:none"><i class="fa fa-compass"></i>Hotel Around You</a>
                       <ul class="treeview-menu">
-                         <div class=" form-group" style="color: white;" > <!-- <br> -->
-                          <!-- <label>Based On Radius</label><br> -->
-                          <label for="inputradius" style="font-size: 10pt";>Radius : </label>
-                          <label  id="nilai"  style="font-size: 10pt";>0</label> m
-
-                          <input  type="range" onchange="init();hotel_sekitar_user();cekkk();" id="inputradius" name="inputradius" data-highlight="true" min="0" max="20" value="0" >
-                          <script>
-                            function cekkk()
-                            {
-                              document.getElementById('nilai').innerHTML=document.getElementById('inputradius').value*100;
-                              // console.log(document.getElementById('inputradius').value*100);
-                            }
-                          </script>
-                        </div>
 
                       </ul>
                   </li>
@@ -50,7 +36,7 @@
 
 <!-- hotel by -->
                   <li class="sub-menu">
-                    <a href="javascript:;" >
+                    <a href="index.php" >
                         <i class="fa fa-search"></i>
                         <span>Search Hotel By</span>
                     </a>

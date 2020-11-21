@@ -98,7 +98,6 @@ while($baris = mysqli_fetch_array($hasil4)){
                <thead>
                  <tr>
                    <th>Room</th>
-                   <th>Type</th>
                    <th>Price</th>
                    <th>Available</th>
                  </tr>
@@ -107,20 +106,18 @@ while($baris = mysqli_fetch_array($hasil4)){
                  <?php
                  // $room;
                  // $harga;
-                 $query_kamar=mysqli_query($conn, "SELECT room.name as type, detail_room.* FROM detail_room left join room using(id_type) right join hotel on hotel.id = detail_room.id_hotel where hotel.id = '".$id."' ");
+                 $query_kamar=mysqli_query($conn, "SELECT detail_room.* FROM detail_room right join hotel on hotel.id = detail_room.id_hotel where hotel.id = '".$id."' ");
                  while($data = mysqli_fetch_array($query_kamar)){
                      $name=$data['name'];
                      $id_room = $data['id_room'];
                      $id_hotel = $data['id_hotel'];
-                     $id_type = $data['id_type'];
-                     $type=$data['type'];
                      $price=$data['price'];
                      $available=$data['available'];
+                     $sisa = $data['sisa'];
 
                      ?>
                      <tr id="<?php echo $data['id_room'];?>">
                        <td><?php echo $name; ?></td>
-                       <td><?php echo $type; ?></td>
                        <td><?php echo $price; ?></td>
                        <td><?php echo $available; ?></td>
                      </tr>
