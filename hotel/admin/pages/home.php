@@ -1,11 +1,13 @@
  <?php
-
+session_start();
 $username = $_SESSION['username'];
+$id_city  = $_SESSION['id'];
+$city     = $_SESSION['name'];
  ?>
 <div class="col-sm-12">  <!-- menampilkan list hotel-->
     <section class="panel">
         <div class="panel-body">
-            <div><h2><a href="?page=hotel_add" title="Add Hotel" style="color: #26a69a;"><i class="fa fa-plus"></i> Add Hotel</a></h2></div><br>
+            <div><h2><a href="?page=hotel_add" title="Add Hotel" style="color: #26a69a;"><i class="fa fa-plus"></i> Add Hotel <?php echo $city; ?></a></h2></div><br>
             <div class="box-body">
                 <div class="form-group">
                     <form method="post" action="pages/hotel_detail.php">
@@ -24,10 +26,11 @@ $username = $_SESSION['username'];
 
                         <tbody>
                         <?php
-                            $sql = mysqli_query($conn, "SELECT * FROM hotel order by name ASC");
+                            $sql = mysqli_query($conn, "SELECT hotel.id as ids, hotel.name as nama, hotel.address, hotel.username FROM hotel, city
+                              where city.id='$id_city' AND ST_CONTAINS(city.geom, hotel.geom) order by hotel.name ASC");
                             while($data =  mysqli_fetch_array($sql)){
-                            $id = $data['id'];
-                            $nama = $data['name'];
+                            $id = $data['ids'];
+                            $nama = $data['nama'];
                             $alamat = $data['address'];
                             $username = $data['username'];
                         ?>

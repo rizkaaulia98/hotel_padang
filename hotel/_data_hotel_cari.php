@@ -1,5 +1,7 @@
 <?php
-require '../connect.php';
+session_start();
+include("../connect.php");
+$city = $_SESSION['id'];
 
 $tipe = $_GET["tipe"];		// Cari berdasarkan apa
 $nilai = $_GET["nilai"];	// Isi yang dicari
@@ -13,22 +15,42 @@ ISI TIPE:
 	4 => Service
 	5 => rating
 	6 => room's price
+	7 => facility_hotel
+	8 => Access
 */
 
 if ($tipe == 1) {
-	$querysearch	="SELECT id, name, st_x(st_centroid(geom)) as lon, st_y(st_centroid(geom)) as lat from hotel where  LOWER(name) like '%".$nilai."%';";
+	$querysearch	="SELECT DISTINCT hotel.id , hotel.name, st_x(st_centroid(hotel.geom)) as lon, st_y(st_centroid(hotel.geom)) as lat from hotel, city
+	where LOWER(hotel.name) like '%$nilai%' and city.id = '$city' AND ST_CONTAINS(city.geom, hotel.geom)";
 } elseif ($tipe == 2) {
-	$querysearch	="SELECT id, name, st_x(st_centroid(hotel.geom)) as lon, st_y(st_centroid(hotel.geom)) as lat from hotel where  LOWER(address) like '%".$nilai."%';";
+	$querysearch	="SELECT hotel.id, hotel.name, st_x(st_centroid(hotel.geom)) as lon, st_y(st_centroid(hotel.geom)) as lat from hotel, city
+	where city.id = '$city' AND ST_CONTAINS(city.geom, hotel.geom) AND LOWER(hotel.address) like '%$nilai%'";
 } elseif ($tipe == 3) {
-	$querysearch	="SELECT hotel.id, hotel.name, st_x(st_centroid(hotel.geom)) as lon, st_y(st_centroid(hotel.geom)) as lat from hotel left join hotel_type on hotel_type.id = hotel.id_type where  LOWER(hotel_type.id) like '%".$nilai."%';";
+	$querysearch	="SELECT hotel.id, hotel.name, st_x(st_centroid(hotel.geom)) as lon, st_y(st_centroid(hotel.geom)) as lat
+	from hotel left join hotel_type on hotel_type.id = hotel.id_type, city where city.id = '$city' AND ST_CONTAINS(city.geom, hotel.geom)
+	AND hotel_type.id = '$nilai'";
 } elseif ($tipe == 4) {
-	$querysearch	="SELECT hotel.id as id, hotel.name, ST_X(ST_Centroid(hotel.geom)) AS lon, ST_Y(ST_CENTROID(hotel.geom)) As lat FROM hotel WHERE id IN(SELECT DISTINCT hotel.id FROM detail_facility_hotel JOIN hotel on detail_facility_hotel.id_hotel=hotel.id WHERE detail_facility_hotel.id_facility = '$nilai');";
+	$querysearch	="SELECT hotel.id, hotel.name, ST_X(ST_Centroid(hotel.geom)) AS lon, ST_Y(ST_CENTROID(hotel.geom)) As lat
+	FROM hotel WHERE id IN(SELECT DISTINCT hotel.id FROM detail_facility_hotel
+		JOIN hotel on detail_facility_hotel.id_hotel=hotel.id, city WHERE city.id = '$city' AND ST_CONTAINS(city.geom, hotel.geom)
+		and detail_facility_hotel.id_facility = '$nilai')";
 } elseif ($tipe == 5) {
-	$querysearch	="SELECT hotel.id as id, hotel.name, ST_X(ST_Centroid(hotel.geom)) AS lon, ST_Y(ST_CENTROID(hotel.geom)) As lat FROM hotel WHERE id IN(SELECT DISTINCT hotel.id FROM detail_room JOIN hotel on detail_room.id_hotel=hotel.id WHERE detail_room.price between '$nilai' and '$nilai2');";
+	$querysearch	="SELECT hotel.id as id, hotel.name, ST_X(ST_Centroid(hotel.geom)) AS lon, ST_Y(ST_CENTROID(hotel.geom)) As lat
+	FROM hotel WHERE id IN(SELECT DISTINCT hotel.id FROM detail_room
+		JOIN hotel on detail_room.id_hotel=hotel.id, city WHERE city.id = '$city' AND ST_CONTAINS(city.geom, hotel.geom)
+		AND detail_room.price between '$nilai' and '$nilai2')";
 } elseif ($tipe == 6) {
-	$querysearch = "SELECT hotel.id, hotel.name,  ST_X(ST_Centroid(hotel.geom)) AS lon, ST_Y(ST_CENTROID(hotel.geom)) As lat, avg(review.rating)as rata from hotel JOIN review on hotel.id=review.id_hotel group by review.id_hotel having avg(review.rating) = '$nilai - 1' and '$nilai' order by rata desc";
+	$querysearch = "SELECT hotel.id, hotel.name,  ST_X(ST_Centroid(hotel.geom)) AS lon, ST_Y(ST_CENTROID(hotel.geom)) As lat, avg(review.rating)as rata
+	from hotel JOIN review on hotel.id=review.id_hotel, city group by review.id_hotel having avg(review.rating) = '$nilai - 1' and '$nilai'
+	where city.id = '$city' AND st_contains(city.geom, hotel.geom) AND order by rata desc ";
 }elseif ($tipe == 7) {
-	$querysearch ="SELECT hotel.id as id, hotel.name, ST_X(ST_Centroid(hotel.geom)) AS lon, ST_Y(ST_CENTROID(hotel.geom)) As lat FROM hotel WHERE id IN(SELECT DISTINCT hotel.id FROM detail_facility_hotel JOIN hotel on detail_facility_hotel.id_hotel=hotel.id WHERE detail_facility_hotel.id_facility = '$nilai');"; ;
+	$querysearch ="SELECT hotel.id as id, hotel.name, ST_X(ST_Centroid(hotel.geom)) AS lon, ST_Y(ST_CENTROID(hotel.geom)) As lat
+	FROM hotel WHERE id IN(SELECT DISTINCT hotel.id FROM detail_facility_hotel
+		JOIN hotel on detail_facility_hotel.id_hotel=hotel.id, city WHERE city.id = '$city' AND ST_CONTAINS(city.geom, hotel.geom)
+		AND detail_facility_hotel.id_facility = '$nilai')";
+}elseif ($tipe == 8) {
+	$querysearch = "SELECT hotel.id, hotel.name, hotel.access, st_x(st_centroid(hotel.geom)) as lon, st_y(st_centroid(hotel.geom)) as lat from hotel, city
+	where city.id = '$city' AND ST_CONTAINS(city.geom, hotel.geom) AND hotel.access='$nilai'";
 }
 
 $hasil=mysqli_query($conn, $querysearch);

@@ -2,6 +2,9 @@
 session_start();
 include ('../connect.php');
 $a = $_GET["idgallery"];
+    $username = $_SESSION['username'];
+    $id_city  = $_SESSION['id'];
+    $city     = $_SESSION['name'];
 // echo $a;
 $s = "SELECT name, cp from hotel where id = '$a'";
 $query = mysqli_query($conn, $s);
@@ -31,6 +34,7 @@ while($data = mysqli_fetch_array($query)) {
     <link href="assets/css/style-responsive.css" rel="stylesheet">
     <link href="assets/css/styles.css" rel="stylesheet">
     <script type="text/javascript" src="html5gallery/html5gallery.js"></script>
+    <!-- <script type="text/javascript" src="html5gallery/jquery.js"></script> -->
   <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
    <!--  Slide -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -40,7 +44,7 @@ while($data = mysqli_fetch_array($query)) {
 
   <script src="../config_public.js"></script>
     <script src="_map.js"></script>
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyANIx4N48kL_YEfp-fVeWmJ_3MSItIP8eI&sensor=true"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDgpfxdQ0Ep_nieNjV64u4yXWeSFHAT4BE"></script>
 
       <!--LOADER-->
     <style>
@@ -149,6 +153,7 @@ while($data = mysqli_fetch_array($query)) {
       <header class="header black-bg">
         <div class="sidebar-toggle-box">
           <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation" style="color: white;"></div>
+          <input type="hidden" id="cityName" value='<?php echo $id_city; ?>'>
         </div>
             <!--logo start-->
         <a href="index.php" class="logo" style="font-family: arial;"><b>WEBGIS</b> • Detail Hotel</a>
@@ -457,7 +462,7 @@ while($data = mysqli_fetch_array($query)) {
                                   $hasil=mysqli_query($conn, $querysearch);
                                   while($baris = mysqli_fetch_assoc($hasil)){
                                     if(($baris['video']=='-')||($baris['video']=='')){
-                                      echo "<a href='../_video/novideo.mp4'><img src='../_video/novideo.mp4' ></a>";
+                                      echo "<a href='../_video/'></a>";
                                     }
                                     else{
                                       echo "<a href='../_video/".$baris['video']."'><img src='../_video/".$baris['video']."'></a>";

@@ -1,5 +1,11 @@
 <!--sidebar start-->
 <!-- Global site tag (gtag.js) - Google Analytics -->
+<?php
+session_start();
+$username = $_SESSION['username'];
+$id_city  = $_SESSION['id'];
+$city     = $_SESSION['name'];
+ ?>
       <aside>
           <div id="sidebar"  class="nav-collapse ">
               <!-- sidebar menu start-->
@@ -7,22 +13,34 @@
 
 
               	  <?php if ($_SESSION['C']==true){ ?>
-                    <p class="centered"><a href="profile.php"><img src="../_foto/2.jpeg" class="img-circle" width="80"></a></p>
+
+                    <?php if ($city=='Padang') { ?>
+                      <p class="centered"><a href="profile.php"><img src="../_foto/2.jpeg" class="img-circle" width="80"></a></p>
+                    <?php }else if ($city=='Bukittinggi') { ?>
+                      <p class="centered"><a href="profile.php"><img src="../_foto/3.jpg" class="img-circle" width="100"></a></p>
+                    <?php } ?>
                     <h5 class="centered">Hello, <?php echo $_SESSION['username'] ?>!</h5>
+
                   <?php }else{ ?>
-                    <p class="centered"><a href="index.php"><img src="../_foto/2.jpeg" class="img-circle" width="80"></a></p>
+                    <?php if ($city=='Padang') { ?>
+                      <p class="centered"><a href="profile.php"><img src="../_foto/2.jpeg" class="img-circle" width="80"></a></p>
+                    <?php }else if ($city=='Bukittinggi') { ?>
+                      <p class="centered"><a href="profile.php"><img src="../_foto/3.jpg" class="img-circle" width="100"></a></p>
+                    <?php } ?>
                     <h5 class="centered">Hello, Visitor!</h5>
                   <?php } ?>
 
                   <li class="sub">
-                      <a href="aboutHotel.php" style="cursor:pointer;background:none"><i class="fa fa-info-circle"></i>About Hotel in Padang</a>
+                      <a href="index.php" style="cursor:pointer;background:none"><i class="icon-home"></i>Home</a>
+                  </li>
+
+                  <li class="sub">
+                      <a href="about.php" style="cursor:pointer;background:none"><i class="fa fa-info-circle"></i>About</a>
                   </li>
 <!-- list hotel -->
                   <li class="sub">
                       <a onclick="init();listHotel();" style="cursor:pointer;background:none"><i class="fa fa-list-ul"></i>List Hotel</a>
                   </li>
-
-
 <!-- end list hotel -->
 
 <!-- hotel around you -->
@@ -57,7 +75,7 @@
                     <ul class="sub">
                       <!-- hotel by name -->
                       <li class="sub">
-                      <a style="cursor:pointer;background:none"><i class="fa fa-sort-alpha-asc"></i> By Name</a>
+                      <a style="cursor:pointer;background:none"><i class="fa fa-sort-alpha-asc"></i> Name</a>
                         <ul class="sub">
                           <li style="margin-top:10px"><input id="input_name" type="text" class="form-control"></li>
                           <li><a onclick="init();cari_hotel(1)" style="cursor:pointer;background:none">Search</a></li>
@@ -67,7 +85,7 @@
 
                     <!-- by address -->
                     <li class="sub">
-                      <a style="cursor:pointer;background:none"><i class="fa fa-bookmark-o"></i> By Address</a>
+                      <a style="cursor:pointer;background:none"><i class="fa fa-bookmark-o"></i> Address</a>
                       <ul class="sub">
                         <li style="margin-top:10px"><input id="input_address" type="text" class="form-control"></li>
                         <li><a onclick="init();cari_hotel(2)" style="cursor:pointer;background:none">Search</a></li>
@@ -77,7 +95,7 @@
 
                     <!-- by type -->
                     <li class="sub">
-                      <a style="cursor:pointer;background:none"><i class="fa fa-tags"></i> By Type</a>
+                      <a style="cursor:pointer;background:none"><i class="fa fa-tags"></i> Type</a>
                       <ul class="sub">
                         <li style="margin-top:10px">
                         <select class="form-control kota text-center" style="width:100%;margin-top:10px" id="select_jenis">
@@ -101,7 +119,7 @@
                     <!-- by room's type -->
 
                     <li class="sub">
-                      <a style="cursor:pointer;background:none"><i class="fa fa-folder-o"></i> By Facility</a>
+                      <a style="cursor:pointer;background:none"><i class="fa fa-folder-o"></i> Facility</a>
                       <ul class="sub">
                         <li style="margin-top:10px">
                         <select class="form-control kota text-center" style="width:100%;margin-top:10px" id="select_facility">
@@ -123,7 +141,7 @@
                     </li>
 
                     <li class="sub">
-                      <a style="cursor:pointer;background:none"><i class="fa fa-tasks"></i> By Hotel Service</a>
+                      <a style="cursor:pointer;background:none"><i class="fa fa-tasks"></i> Hotel Service</a>
                       <ul class="sub">
                         <li style="margin-top:10px">
                           <select class="form-control kota text-center" style="width:100%;margin-top:10px" id="select_service">
@@ -148,7 +166,7 @@
                     </li>
 
                     <li class="sub">
-                      <a style="cursor:pointer;background:none"><i class="fa fa-star"></i> By Hotel Rating</a>
+                      <a style="cursor:pointer;background:none"><i class="fa fa-star"></i> Hotel Rating</a>
                       <ul class="sub">
                         <li style="margin-top:10px">
                           <select class="form-control kota text-center" style="width:100%;margin-top:10px" id="select_rating">
@@ -167,7 +185,7 @@
                     <!-- end by room -->
 
                     <li class="sub">
-                      <a style="cursor:pointer;background:none"><i class="fa fa-money"></i> By Room's Price</a>
+                      <a style="cursor:pointer;background:none"><i class="fa fa-money"></i> Room's Price</a>
                       <ul class="sub">
                         <li style="margin-top:10px">
                           <input id="rendah" type="text" class="form-control" placeholder="lowest-price"></br>
@@ -176,6 +194,40 @@
                         <li><a onclick="init(); cari_hotel(5);" style="cursor:pointer;background:none"> <i class="fa fa-search"></i>Search</a></li>
                       </ul>
                     </li>
+
+                    <li class="sub">
+                      <a style="cursor:pointer;background:none"><i class="fa fa-bus"></i> Trans Access</a>
+                      <ul class="sub">
+                        <li style="margin-top:10px">
+                          <select class="form-control kota text-center" style="width:100%;margin-top:10px" id="select_access">
+                            <option value="0"> No Bus</option>
+                            <option value="1"> Bus</option>
+                          </select>
+
+                        </li>
+                        <li><a onclick="init();cari_hotel(8)" style="cursor:pointer;background:none">Search</a></li>
+                      </ul>
+                    </li>
+
+                    <li class="sub">
+                      <a style="cursor:pointer;background:none"><i class="icon-car"></i> Public Trans</a>
+                      <ul class="sub">
+                        <li style="margin-top:10px">
+                        <select class="form-control kota text-center" style="width:100%;margin-top:10px" id="jurusan">
+                          <?php
+                          include('../connect.php');
+                          $angkot=mysqli_query($conn,"SELECT angkot.id as ids, angkot.destination from angkot, city where city.id = '$id_city' AND st_contains(city.geom, angkot.geom)");
+                          while($rowangkot = mysqli_fetch_array($angkot))
+                          {
+                            echo"<option value=".$rowangkot['ids'].">".$rowangkot['destination']."</option>";
+                          }
+                          ?>
+                        </select>
+                        </li>
+                        <li><a onclick="init();cariByRoute();" style="cursor:pointer;background:none">Search</a></li>
+                      </ul>
+                    </li>
+
 
                     </ul>
 
@@ -214,7 +266,6 @@
 <?php } ?>
 
 <!-- end of transaksi -->
-
 <!-- dashboard -->
                   <li class="sub-menu">
                       <a class="active" href="../">

@@ -1,6 +1,16 @@
-
+<?php
+session_start();
+$username = $_SESSION['username'];
+$id_city  = $_SESSION['id'];
+$city     = $_SESSION['name'];
+?>
 <ul class="sidebar-menu" id="nav-accordion">
-  <p class="centered"><a href="profile.html"><img src="../../_foto/2.jpeg" class="img-circle" width="60"></a></p>
+  <?php if ($city=='Padang') {?>
+    <p class="centered"><a href="profile.html"><img src="../../_foto/2.jpeg" class="img-circle" width="60"></a></p>
+  <?php }elseif ($city=='Bukittinggi') {?>
+    <p class="centered"><a href="profile.html"><img src="../../_foto/3.jpg" class="img-circle" width="90"></a></p>
+  <?php } ?>
+
   <h5 class="centered"><p><?php echo $_SESSION['username']; ?></p></h5>
 
   <li class="mt">

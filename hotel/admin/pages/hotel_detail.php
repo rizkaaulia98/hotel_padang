@@ -7,7 +7,7 @@ $user = $_POST['username'];
 //echo "woiiiiiiiiiiiiiiiiiiiii $id & $id_hotel& $user";
 //DATA TOURISM
 // $query = "SELECT hotel.id, hotel.name, hotel.address, hotel.cp, hotel.ktp, hotel.marriage_book, hotel.mushalla, hotel_type.name as type_hotel, st_x(st_centroid(hotel.geom)) as lon,st_y(st_centroid(hotel.geom)) as lat,hotel.username  from hotel left join hotel_type on hotel_type.id=hotel.id_type where hotel.id='$id'";
-$hasil=mysqli_query($conn, "SELECT hotel.id, hotel.name, hotel.address, hotel.cp, hotel.ktp, hotel.marriage_book, hotel.mushalla, hotel_type.name as type_hotel, st_x(st_centroid(hotel.geom)) as lon,st_y(st_centroid(hotel.geom)) as lat from hotel left join hotel_type on hotel_type.id=hotel.id_type where hotel.id='$id'");
+$hasil=mysqli_query($conn, "SELECT hotel.id, hotel.access, hotel.name, hotel.address, hotel.cp, hotel.ktp, hotel.marriage_book, hotel.mushalla, hotel_type.name as type_hotel, st_x(st_centroid(hotel.geom)) as lon,st_y(st_centroid(hotel.geom)) as lat from hotel left join hotel_type on hotel_type.id=hotel.id_type where hotel.id='$id'");
 while($baris = mysqli_fetch_array($hasil)){
   $id=$baris['id'];
   $name_hotel=$baris['name'];
@@ -20,25 +20,26 @@ while($baris = mysqli_fetch_array($hasil)){
   $lng=$baris['lon'];
   $lat=$baris['lat'];
   $cp=$baris['cp'];
+  $access=$baris['access'];
   if ($lat=='' || $lng==''){
-    $lat='<span style="color:red">Kosong</span>';
-    $lng='<span style="color:red">Kosong</span>';
+    $lat='<span style="color:red">Empty</span>';
+    $lng='<span style="color:red">Empty</span>';
   }
 }
 
 	$syarat="-";
 	if ($ktp == 1 && $marriage_book == 1) {
-	  $syarat = "KTP & Buku Nikah";
+	  $syarat = "ID Card & Marriage Certificate";
 	}
 	else if ($ktp == 1) {
-	  $syarat = "KTP";
+	  $syarat = "ID Card";
 	} else if ($marriage_book == 1) {
-	  $syarat = "Buku Nikah";
+	  $syarat = "Marriage Certificate";
 	}
 
 	$mushalla_stat = "-";
 	if ($mushalla == 1) {
-	  $mushalla_stat = "Ada Mushalla";
+	  $mushalla_stat = "Exist";
 	};
 
 //DATA FASILITAS
@@ -79,10 +80,16 @@ while($baris = mysqli_fetch_array($hasil4)){
 				<table>
 					<tbody  style='vertical-align:top;'>
 						<tr><td width="150px"><b>Address</b></td><td> :&nbsp; </td><td style='text-transform:capitalize;'><?php echo $address ?></td></tr>
-						<tr><td><b>Cp</b></td><td>:</td><td><?php echo $cp ?></td></tr>
-						<tr><td><b>Syarat</b></td> <td> :</td><td><?php echo $syarat ?></td></tr>
+						<tr><td><b>Contact Person</b></td><td>:</td><td><?php echo $cp ?></td></tr>
+						<tr><td><b>Requirements</b></td> <td> :</td><td><?php echo $syarat ?></td></tr>
 						<tr><td><b>Mushalla<b> </td><td>: </td><td><?php echo $mushalla_stat ?></td></tr>
-						<tr><td><b>Type<b> </td><td>: </td><td><?php echo $tourism_type ?></td></tr>
+            <tr><td><b>Hotel Type<b> </td><td>: </td><td><?php echo $tourism_type ?></td></tr>
+              <?php if ($access=="1") { ?>
+                <tr><td><b>Transport Access<b> </td><td>: </td><td>Bus</td></tr>
+              <?php }else { ?>
+                <tr><td><b>Transport Access<b> </td><td>: </td><td>No Bus</td></tr>
+              <?php } ?>
+
 						<!-- <tr><td><b>Hotel Star<b> </td><td>: </td><td><?php echo $star ?></td></tr> -->
 						<tr><td><b>Koordinat<b> </td><td>: </td><td><b>Latitude</b> : <?php echo $lat ?> <br><b>Longitude</b> : <?php echo $lng ?></td></tr>
 					</tbody>
@@ -218,7 +225,9 @@ while($baris = mysqli_fetch_array($hasil4)){
 			        </header>
 
 			        <div class="panel-body">
-                        <div class="html5gallery" data-responsive="false" style="width:100%;overflow:auto;" data-skin="horizontal"  data-resizemode="fit">
+                        <div class="html5gallery" data-responsive="true" style="width:100%;overflow:auto;" data-skin="horizontal"  data-width="450" data-height="250" data-resizemode="fit">
+                        <!-- <div class="html5gallery" style="display:none;" data-skin="horizontal" data-width="450" data-height="250" data-resizemode="fit"> -->
+
 				    	<?php
 							$id=$_GET['id'];
 							$querysearch="SELECT gallery_hotel FROM hotel_gallery where id='$id'";

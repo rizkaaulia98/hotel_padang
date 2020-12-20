@@ -20,29 +20,26 @@
       <a class="btn btn-compose">Add Information</a>
       <div class="box-body">
         <div class="form-group" id="hasilcari1">
-          <form role="form" action="act/hotel_add.php" enctype="multipart/form-data" method="post">
-             <?php
-            $query = mysqli_query($conn, "SELECT MAX(id) AS id FROM hotel");
-            $result = mysqli_fetch_array($query);
-            $idmax = $result['id'];
-              if ($idmax==null)
-                {$idmax=1;}
-              else
-                {
-                  $idmax++;
-                }
+          <?php
+         $query = mysqli_query($conn, "SELECT MAX(id) AS id FROM hotel");
+         $result = mysqli_fetch_array($query);
+         $idmax = $result['id'];
+           if ($idmax==null)
+             {$idmax=1;}
+           else
+             {
+               $idmax++;
+             }
 
-          ?>
-            <input type="text" class="form-control hidden" id="id" name="id" value="<?php echo $idmax ?>">
+       ?>
+          <form role="form" action="act/hotel_add.php" enctype="multipart/form-data" method="post">
+
+            <input type="text" class="form-control" id="id" name="id" value="<?php echo $idmax ?>">
 
             <div class="form-group">
 
               <label for="geom">Coordinate</label>
               <textarea class="form-control" id="geom" name="geom" readonly></textarea>
-            </div>
-            <div class="form-group">
-              <label for="id">Hotel Id</label>
-              <input type="text" class="form-control" name="id" value="">
             </div>
             <div class="form-group">
               <label for="name">Name</label>
@@ -88,6 +85,20 @@
               <div class="checkbox">
                 <label>
                   <input type="checkbox" name="marriage_book" value="1">Marriage Book
+                </label>
+              </div>
+            </div>
+
+            <h4>Access</h4>
+            <div class="form-group">
+              <div class="radio">
+                <label>
+                  <input type="radio" name="access"  <?php if (isset($access) && $access==1) echo "checked";?> value="1">Bus
+                </label>
+              </div>
+              <div class="radio">
+                <label>
+                  <input type="radio" name="access"  <?php if (isset($access) && $access==0) echo "checked";?> value="0">No Bus
                 </label>
               </div>
             </div>

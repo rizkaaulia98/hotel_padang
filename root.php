@@ -1,23 +1,15 @@
 <?php
+require 'connect.php';
+	session_start();
 	$pilihan = $_POST['pilihan'];
-	if($pilihan==1){
-		echo "<script>eval(\"parent.location='angkot_bkt/ '\");	</script>";
-	} else if($pilihan==2){
-		echo "<script>eval(\"parent.location='hotel/ '\");	</script>";
-	} else if($pilihan==3){
-		echo "<script>eval(\"parent.location='ik_bkt/ '\");	</script>";
-	} else if($pilihan==4){
-		echo "<script>eval(\"parent.location='kuliner_bkt/ '\");	</script>";
-	} else if($pilihan==5){
-		echo "<script>eval(\"parent.location='mosque_bkt/ '\");	</script>";
-	} else if($pilihan==6){
-		echo "<script>eval(\"parent.location='rm_bkt/ '\");	</script>";
-	} else if($pilihan==7){
-		echo "<script>eval(\"parent.location='souvenir_bkt/ '\");	</script>";
-	} else if($pilihan==8){
-		echo "<script>eval(\"parent.location='tourism_bkt/ '\");	</script>";
-	}
-	else if ($pilihan==9){
-		echo "<script>eval(\"parent.location='JambuAir-Cingkariang_bkt/ '\");	</script>";
-	}
+	$city 	 = $_POST['city'];
+
+	$sql = mysqli_query($conn, "SELECT * FROM city WHERE id = '$city'");
+
+	$row  = mysqli_fetch_array($sql);
+	$_SESSION['id']   = $row['id'];
+	$_SESSION['name'] = $row['name'];
+
+		echo "<script>eval(\"parent.location='hotel/ '\"); </script>";
+
 ?>

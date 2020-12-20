@@ -4,7 +4,7 @@
               </div>
             <header class="header black-bg">
 
-            <a class="logo"><p><img src="assets/ico/111.png"><b>W</b>EB<b style="font-size: 17px">GIS</b>&nbspADMIN</p></a>
+            <a class="logo" style="font-family: arial;"><b>WEBGIS</b> • Admin Hotel</a>
   <ul class="nav pull-right top-menu">
                   <a href="act/logout.php" class="logo" style="font-size:14px"><i class="icon-esc"></i>
                    <b>Logout</b></a>

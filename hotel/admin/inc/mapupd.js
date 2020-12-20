@@ -1,4 +1,3 @@
-
 var drawingManager;
 var selectedShape;
 var markers = [];
@@ -6,41 +5,13 @@ var markers = [];
 // ===== CALLBACK MAPS DRAWER =====
 function initialize(){
     map = new google.maps.Map(document.getElementById('map'),{
-    center: new google.maps.LatLng(-0.9270287, 100.3782106),
-    zoom: 16,
-    mapTypeId: google.maps.MapTypeId.SATELLITE,
+    center: new google.maps.LatLng(-0.9478796428309669, 100.41658474111512),
+    zoom: 12,
+    mapTypeId: google.maps.MapTypeId.ROADMAP,
     disableDefaultUI: true,
     zoomControl: true,
     mapTypeControl: true
   });
-
-  const drawingManager = new google.maps.drawing.DrawingManager({
-    drawingMode: google.maps.drawing.OverlayType.MARKER,
-    drawingControl: true,
-    drawingControlOptions: {
-      position: google.maps.ControlPosition.TOP_CENTER,
-      drawingModes: [
-        google.maps.drawing.OverlayType.MARKER,
-        google.maps.drawing.OverlayType.CIRCLE,
-        google.maps.drawing.OverlayType.POLYGON,
-        google.maps.drawing.OverlayType.POLYLINE,
-        google.maps.drawing.OverlayType.RECTANGLE,
-      ],
-    },
-    markerOptions: {
-      icon:
-        "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png",
-    },
-    circleOptions: {
-      fillColor: "#ffff00",
-      fillOpacity: 1,
-      strokeWeight: 5,
-      clickable: false,
-      editable: true,
-      zIndex: 1,
-    },
-  });
-  drawingManager.setMap(map);
 
   //mencari lokasi dengan latlng
   var geocoder = new google.maps.Geocoder;
@@ -227,13 +198,3 @@ function resizingMap() {
    google.maps.event.trigger(map, "resize");
    map.setCenter(center);
 }
-
-// // To hide:
-// drawingManager.setOptions({
-//   drawingControl: false
-// });
-//
-// // To show:
-// drawingManager.setOptions({
-//   drawingControl: true
-// });

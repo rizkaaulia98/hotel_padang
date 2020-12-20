@@ -22,14 +22,14 @@
         <div class="form-group" id="hasilcari1">
 				  <?php if (isset($_GET['id'])){
     	 			$id=$_GET['id'];
-    				$sql = mysqli_query($conn, "SELECT id, name, address,cp, ktp, marriage_book, mushalla, ST_AsText(geom) as geom, id_type FROM hotel where id='$id'");
+    				$sql = mysqli_query($conn, "SELECT id, name, address,cp, ktp, marriage_book, access, mushalla, ST_AsText(geom) as geom, id_type FROM hotel where id='$id'");
     				$data =  mysqli_fetch_array($sql);
     			?>
           <form role="form" action="act/hotel_update.php" enctype="multipart/form-data" method="post">
 
             <div class="form-group">
               <label for="geom">Koordinat</label>
-              <textarea class="form-control" id="geom" name="geom" readonly><?php echo $data['geom'] ?></textarea> 
+              <textarea class="form-control" id="geom" name="geom" readonly><?php echo $data['geom'] ?></textarea>
             </div>
             <div class="form-group">
               <label for="id">ID Hotel</label>
@@ -62,67 +62,6 @@
                 ?>
               </select>
             </div>
-            <!-- <div class="form-group">
-              <label for="type">Hotel Star</label>
-              <select name="star" id="star" class="form-control">
-                <?php
-                  if ($data['star'] == 0) {?>
-                    <option value="0" selected>0</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                <?php
-                  }else if($data['star'] == 1){
-                ?>
-                    <option value="0">0</option>
-                    <option value="1"  selected>1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                <?php
-                  }else if($data['star'] == 2){
-                ?>
-                    <option value="0">0</option>
-                    <option value="1">1</option>
-                    <option value="2"  selected>2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                <?php
-                  }else if($data['star'] == 3){
-                ?>
-                    <option value="0">0</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3"  selected>3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                <?php
-                  }else if($data['star'] == 4){
-                ?>
-                    <option value="0">0</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4"   selected>4</option>
-                    <option value="5">5</option>
-                <?php
-                  }else if($data['star'] == 5){
-                ?>
-                    <option value="0">0</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5"  selected>5</option>
-                <?php
-                  }
-                ?>
-              </select>
-            </div>   -->
             <div class="form-group">
               <label for="type">Mushalla</label>
               <select name="mushalla" id="mushalla" class="form-control">
@@ -141,17 +80,17 @@
               </select>
             </div>
             <br>
-            <h4>Syarat Inap</h4>
+            <h4>Requirements</h4>
             <div class="form-group">
               <div class="checkbox">
                 <label>
                   <?php
                     if ($data['ktp'] == 1) {?>
-                      <input type="checkbox" name="ktp" value="1" checked>KTP
+                      <input type="checkbox" name="ktp" value="1" checked>ID Card
                   <?php
                     }else{
                   ?>
-                      <input type="checkbox" name="ktp" value="1" >KTP
+                      <input type="checkbox" name="ktp" value="1" >ID Card
                   <?php
                     }
                   ?>
@@ -172,6 +111,21 @@
                 </label>
               </div>
             </div>
+
+            <h4>Access</h4>
+            <div class="form-group">
+              <div class="radio">
+                <label>
+                  <input type="radio" name="access" value="1" <?php if($data['access']=='1') echo 'checked';?>>Bus
+                </label>
+              </div>
+              <div class="radio">
+                <label>
+                  <input type="radio" name="access" value="0" <?php if($data['access']=='0') echo 'checked';?>>No Bus
+                </label>
+              </div>
+            </div>
+
 
             <button type="submit" class="btn btn-primary pull-right">Save <i class="fa fa-floppy-o"></i>
             <input hidden name="id_awal" value="<?php echo $data['id'] ?>"></button>

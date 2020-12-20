@@ -1,9 +1,11 @@
-<?php
+<?
+session_start();
 include ('../../connect.php');
 //session_start();
 $id = $_GET["id"];
 $id_hotel = $_SESSION['id'];
 $username = $_SESSION['username'];
+$city     = $_SESSION['name'];
 
 $query = "SELECT hotel.id, hotel.name, hotel.address, hotel.cp, hotel.ktp, hotel.marriage_book, hotel.mushalla, hotel_type.name as type_hotel, st_x(st_centroid(hotel.geom)) as lon,st_y(st_centroid(hotel.geom)) as lat, admin.username, admin.name as nama_admin
 from hotel left join hotel_type on hotel_type.id=hotel.id_type left join admin on admin.username = hotel.username where hotel.username='$username'";

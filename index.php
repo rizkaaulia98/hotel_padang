@@ -30,26 +30,29 @@
       <!-- **********************************************************************************************************************************************************
       MAIN CONTENT
       *********************************************************************************************************************************************************** -->
-          <form class="form-login" action="root.php" method="post">
-            <h2 class="form-login-heading" style="background:#26a69a;border-color:white">Halal Tourism Padang</h2>
-            <div class="login-wrap">
-              <select class="form-control kota text-center" style="width:100%;margin-top:10px" id="pilihan" name="pilihan">
-                  <option  value="1">Angkot</option>
-                  <option  value="2">Hotel</option>
-                  <option  value="3">Small Industry</option>
-                  <option  value="4">Culinary</option>
-                  <option  value="5">Worship Place</option>
-                  <option  value="6">Restaurant</option>
-                  <option  value="7">Souvenir</option>
-                  <option  value="8">Tourism Destination</option>
-		              <!-- <option value="9">Jambu Air-Cingkariang</option> -->
+      <form class="form-login" action="root.php" method="post">
+        <h2 class="form-login-heading" style="background:#26a69a;border-color:white">Halal Tourism</h2>
+        <div class="login-wrap" style="opacity: 85%" >
+            <select class="form-control text-center" style="width:100%;margin-top:10px" id="city" name="city">
+                <option value=''>- Choose City -</option>
+                <?php
+                    include('connect.php');
+                    $querysearch = "SELECT id, name FROM city";
+                    $hasil = mysqli_query($conn, $querysearch);
+                    while($baris = mysqli_fetch_array($hasil))
+                    {
+                       $id = $baris['id'];
+                       $name = $baris['name'];
+                       echo "<option value='$id'>$name</option>";
+                    }
+                ?>
+            </select>
 
-
-              </select>
-               <hr>
-              <button type="submit" class="btn btn-theme btn-block"style="background:#26a69a;border-color:white">Select</button>
-            </div>
-          </form>
+            <br>
+            <button type="submit" class="btn btn-default" style="width: 100%; background: #26a69a;color: white">Select</button>
+            <hr>
+        </div>
+    </form>
 
     <!-- js placed at the end of the document so the pages load faster -->
 <!--     <script src="angkot_bkt/assets/js/jquery.js"></script>

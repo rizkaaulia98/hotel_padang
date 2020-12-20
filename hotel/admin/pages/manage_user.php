@@ -141,12 +141,16 @@ ul.tabs li a.active {
 
               <div id="Admin" class="w3-container w3-border manage" style="display:none"><br><br>
                 <table id="example3" class="table table-hover table-bordered table-striped">
+                  <header>
+                    <h2><a href="?page=user_add" title='Add New User' style="color:teal;"><i class="fa fa-plus"></i> Add New Hotel Admin</a></h2><br>
+
+                  </header>
                     <thead class="w3-teal">
                         <tr>
+                            <th>Hotel Name</th>
                             <th>Username</th>
                             <th>Name</th>
                             <th>Email</th>
-                            <th>Hotel Name</th>
                             <th>Last Login</th>
                             <th>Action</th>
                         </tr>
@@ -165,15 +169,15 @@ ul.tabs li a.active {
 
                     ?>
                         <tr>
+                            <td><?php echo "$name"; ?></td>
                             <td><?php echo "$username"; ?></td>
                             <td><?php echo "$nama"; ?></td>
                             <td><?php echo "$email"; ?></td>
-                            <td><?php echo "$name"; ?></td>
                             <td><?php echo "$last_login"; ?></td>
 
                             <td>
                                 <div class="btn-group">
-                                    <a href="?page=user_update&username=<?php echo $username; ?>" title='Update' style="color:teal;"><i class="fa fa-edit"></i></a>&nbsp;&nbsp;
+                              <a href="?page=user_update&username=<?php echo $username; ?>" title='Update' style="color:teal;"><i class="fa fa-edit"></i></a>&nbsp;&nbsp;
                               <a href="act/delete_user.php?id=<?php echo $username; ?>"  title='Delete' style="color:teal;"><i class="fa fa-trash-o"></i></a>
                           </div>
                             </td>

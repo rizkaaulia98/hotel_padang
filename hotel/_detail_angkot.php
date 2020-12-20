@@ -1,8 +1,11 @@
 <?php
     include("../connect.php");
-    $id_tourism = $_GET['id'];
+    $id_hotel = $_GET['id'];
 
-    $result=  mysqli_query($conn, "SELECT detail_tourism.id_angkot, tourism.name, angkot.destination, angkot.route_color as color, st_x(st_centroid(tourism.geom)) as lng2, st_y(st_centroid(tourism.geom)) as lat2, detail_tourism.lat, detail_tourism.lng, detail_tourism.description FROM detail_tourism left join tourism on tourism.id = detail_tourism.id_tourism left join angkot on angkot.id = detail_tourism.id_angkot where detail_tourism.id_tourism='$id_tourism' ");
+    $result=  mysqli_query($conn, "SELECT detail_hotel.id_hotel, detail_hotel.id_angkot, hotel.name, angkot.destination, angkot.route_color as color, st_x(st_centroid(hotel.geom))
+    as lng2, st_y(st_centroid(hotel.geom)) as lat2, detail_hotel.lat, detail_hotel.lng, detail_hotel.description
+    FROM detail_hotel left join hotel on hotel.id = detail_hotel.id_hotel
+    left join angkot on angkot.id = detail_hotel.id_angkot where detail_hotel.id_hotel='$id_hotel' ");
 
     while($baris = mysqli_fetch_array($result)){
         $id=$baris['id_angkot'];

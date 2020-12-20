@@ -1,6 +1,8 @@
 <?php
 session_start();
     $username = $_SESSION['username'];
+    $id_city  = $_SESSION['id'];
+    $city     = $_SESSION['name'];
 
  ?>
 <!DOCTYPE html>
@@ -12,7 +14,7 @@ session_start();
     <meta name="author" content="Rizka">
     <meta name="keyword" content="Hotel, SI Unand, Unand, Wisata">
 
-    <title>Halal Tourism • Padang</title>
+    <title>Halal Tourism • <?php echo $city; ?></title>
 
     <!-- Bootstrap core CSS -->
     <link href="assets/css/bootstrap.css" rel="stylesheet">
@@ -50,7 +52,7 @@ session_start();
 
     <script src="../config_public.js"></script>
     <script src="_map.js"></script>
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyANIx4N48kL_YEfp-fVeWmJ_3MSItIP8eI"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDgpfxdQ0Ep_nieNjV64u4yXWeSFHAT4BE"></script>
 
 
     <style type="text/css">
@@ -72,12 +74,12 @@ session_start();
               opacity: 0.4;
           }
           .a {
-              background: #FF0000;
+              background: #00b300;
             }
           .b {
-              background: #ffd777;
+              background: #FF0000;
             }
-          .c {
+          /* .c {
               background: #00b300;
             }
           .d {
@@ -103,7 +105,7 @@ session_start();
             }
           .k {
               background: #110094;
-            }
+            } */
 
           /*css scrollbar*/
           ::-webkit-scrollbar {
@@ -244,9 +246,10 @@ session_start();
       <header class="header black-bg">
         <div class="sidebar-toggle-box">
             <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation" style="color: white;"></div>
+            <input type="hidden" id="cityName" value='<?php echo $id_city; ?>'>
         </div>
         <!--logo start-->
-        <a href="index.php" class="logo" style="font-family: arial;"><b>WEBGIS</b> • Padang Hotel</a>
+        <a href="index.php" class="logo" style="font-family: arial;"><b>WEBGIS</b> • <?php echo $city;?> Hotel</a>
         <div class="top-menu">
         	<ul class="nav pull-right top-menu">
             <li><div id="loader" style="display:none;margin-right:5px"></div></li>
@@ -430,8 +433,8 @@ session_start();
                       <div class="item active">
                         <img src="../_foto/we_hot.jpeg" style="width:100%;">
                         <div class="carousel-caption" style="bottom: 10px; ">
-                          <b> Padang</b><br>
-                          <font style="font-size: 12px; text-align: center">Hotel Recommended in Padang</font>
+                          <b> <?php echo $city;?></b><br>
+                          <font style="font-size: 12px; text-align: center">Hotel Recommended in <?php echo $city;?></font>
                         </div>
                       </div>
 
@@ -519,6 +522,24 @@ session_start();
                         </div>
                       </div><!-- /col-md-12 -->
 
+                      <!-- angkot -->
+                      <div id="view_angkot_table" class="col-md-4 col-sm-4 mb" style="margin-top:0px; display:none;">
+                        <div class="white-panel pns" style="height:510px">
+                           <div class="white-header" style="height:40px;margin:20px;background:white;color:black">
+                             <h5 class="btn btn-compose" id="judul_table">Results</h5>
+                           </div>
+                           <div class="row">
+                             <div class="col-sm-6 col-xs-6"></div>
+                           </div>
+                           <div style="height:410px; overflow-y: scroll; margin:20px;">
+                              <table style="color:black" class="table table-bordered">
+                                <!-- <tr id="kanan_table1"></tr> -->
+                                <tbody id='angkot_table'></tbody>
+                              </table>
+                           </div>
+                        </div>
+                      </div>
+
                       <div id="view_kanan_table1" class="col-md-4 col-sm-4 mb" style="margin-top:0px; display:none;">
                         <div class="white-panel pns">
                            <div class="white-header" style="height:40px;margin:20px;background:white;color:black">
@@ -561,12 +582,6 @@ session_start();
                               </table>
                               <table id="table_culinary" class="table table-bordered">
                                 <tbody id='table_kanan_culinary' style='color:black'></tbody>
-                              </table>
-                              <table id="table_industry" class="table table-bordered">
-                                <tbody id='table_kanan_industry' style='color:black'></tbody>
-                              </table>
-                              <table id="table_restaurant" class="table table-bordered">
-                                <tbody id='table_kanan_restaurant' style='color:black'></tbody>
                               </table>
                               <table id="table_angkot" class="table table-bordered">
                                 <tbody id='table_kanan_angkot' style='color:black'></tbody>

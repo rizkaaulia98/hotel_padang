@@ -7,6 +7,7 @@ $cp = $_POST['cp'];
 $type = $_POST['type'];
 $mushalla = $_POST['mushalla'];
 $geom = $_POST['geom'];
+$access= $_POST['access'];
 
 $ktp = $_POST['ktp'];
 $marriage_book = $_POST['marriage_book'];
@@ -16,11 +17,14 @@ if ($ktp != 1) {
 if ($marriage_book != 1) {
 	$marriage_book=0;
 }
-$sql = mysqli_query($conn, "insert into hotel (id, name, address, cp, geom, ktp, marriage_book, mushalla, id_type) values ('$id', '$nama', '$address', '$cp', ST_GeomFromText('$geom'), '$ktp', '$marriage_book', '$mushalla', '$type')");
+$sql = mysqli_query($conn, "INSERT into hotel (id, access, name, address, cp, geom, ktp, marriage_book, mushalla, id_type) values ('$id', '$access', '$nama', '$address', '$cp', ST_GeomFromText('$geom'), '$ktp', '$marriage_book', '$mushalla', '$type')");
+echo mysqli_error($sql);
 if ($sql){
 	echo "<script>alert ('Data Successfully Added');</script>";
 }else{
 	echo "<script>alert ('Error');</script>";
+  // trigger_error("Query Failed! SQL: $sql - Error: ".mysqli_error($sql), E_USER_ERROR);
 }
-echo "<script>eval(\"parent.location='../'\");</script>";
+echo "<script>eval(\"parent.location='../index.php?page=hotel_add'\");</script>";
+
 ?>

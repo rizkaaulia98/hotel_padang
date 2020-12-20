@@ -1,9 +1,10 @@
 
 <?php
+session_start();
 require '../connect.php';
 
 $tipe = $_GET["tipe"];		// Cari berdasarkan apa
-
+$id_city  = $_SESSION['id'];
 /*
 ISI TIPE:
 	1 => Star Hotel Rec
@@ -13,13 +14,25 @@ ISI TIPE:
 */
 
 if ($tipe == 1) {
-  $querysearch	="SELECT id, name, st_x(st_centroid(geom)) as lon, st_y(st_centroid(geom)) as lat from hotel where  status like 'P1'";
-} elseif ($tipe == 2) {
-  $querysearch	="SELECT id, name, st_x(st_centroid(geom)) as lon, st_y(st_centroid(geom)) as lat from hotel where  status like 'P2'";
-} elseif ($tipe == 3) {
-  $querysearch	="SELECT id, name, st_x(st_centroid(geom)) as lon, st_y(st_centroid(geom)) as lat from hotel where  status like 'P3'";
-} elseif ($tipe== 4) {
-  $querysearch	="SELECT id, name, st_x(st_centroid(geom)) as lon, st_y(st_centroid(geom)) as lat from hotel where  status like 'P4'";
+  $querysearch	="SELECT hotel.id, hotel.name, st_x(st_centroid(hotel.geom)) as lon, st_y(st_centroid(hotel.geom))
+  as lat, hotel_recommendation.id_kategori, hotel_recommendation.id_hotel from hotel_recommendation
+  join hotel on hotel.id=hotel_recommendation.id_hotel, city
+  where (hotel_recommendation.id_kategori = 'a') and city.id='$id_city' AND ST_CONTAINS(city.geom, hotel.geom)";
+}elseif ($tipe == 2) {
+  $querysearch	="SELECT hotel.id, hotel.name, st_x(st_centroid(hotel.geom)) as lon, st_y(st_centroid(hotel.geom))
+  as lat, hotel_recommendation.id_kategori, hotel_recommendation.id_hotel from hotel_recommendation
+  join hotel on hotel.id=hotel_recommendation.id_hotel, city
+  where (hotel_recommendation.id_kategori = 'b') and city.id='$id_city' AND ST_CONTAINS(city.geom, hotel.geom)";
+}elseif ($tipe == 3) {
+  $querysearch	="SELECT hotel.id, hotel.name, st_x(st_centroid(hotel.geom)) as lon, st_y(st_centroid(hotel.geom))
+  as lat, hotel_recommendation.id_kategori, hotel_recommendation.id_hotel from hotel_recommendation
+  join hotel on hotel.id=hotel_recommendation.id_hotel, city
+  where (hotel_recommendation.id_kategori = 'c') and city.id='$id_city' AND ST_CONTAINS(city.geom, hotel.geom)";
+}elseif ($tipe == 4) {
+  $querysearch	="SELECT hotel.id, hotel.name, st_x(st_centroid(hotel.geom)) as lon, st_y(st_centroid(hotel.geom))
+  as lat, hotel_recommendation.id_kategori, hotel_recommendation.id_hotel from hotel_recommendation
+  join hotel on hotel.id=hotel_recommendation.id_hotel, city
+  where (hotel_recommendation.id_kategori = 'd') and city.id='$id_city' AND ST_CONTAINS(city.geom, hotel.geom)";
 }
 
 $hasil=mysqli_query($conn, $querysearch);

@@ -1,13 +1,12 @@
 <?php
 include ('../../../connect.php');
-$type = $_POST['type'];
-$city = $_POST['city'];
+$category = $_POST['category'];
 $hotel = $_POST['hotel'];
+$grade = $_POST['grade'];
 
-$id=$city.$type;
-$status=$id;
 
-$sql = mysqli_query($conn, "UPDATE hotel set status='$status' where id='$hotel'");
+$sql = mysqli_query($conn, "INSERT INTO hotel_recommendation(id_hotel, id_kategori,grade)
+VALUES ('$hotel', '$category', '$grade')");
 if ($sql){
  echo "<script>alert ('Data Successfully Updated');</script>";
 }else{

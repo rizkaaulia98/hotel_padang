@@ -23,6 +23,7 @@ if ($insert){
 		</script>";
 }else{
 	echo 'error';
+	trigger_error("Query Failed! SQL: $sql - Error: ".mysqli_error($insert), E_USER_ERROR);
 }
 
 

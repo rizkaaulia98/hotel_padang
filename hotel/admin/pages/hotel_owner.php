@@ -4,7 +4,7 @@ $id = $_GET["id"];
 $id_hotel = $_SESSION['id'];
 $admin=$_SESSION['username'];
 $user = $_POST['username'];
-$hasil=mysqli_query($conn, "SELECT hotel.id, hotel.name, hotel.address, hotel.cp, hotel.ktp, hotel.marriage_book, hotel.mushalla, hotel_type.name as type_hotel, st_x(st_centroid(hotel.geom)) as lon,st_y(st_centroid(hotel.geom)) as lat from hotel left join hotel_type on hotel_type.id=hotel.id_type where hotel.id='$id'");
+$hasil=mysqli_query($conn, "SELECT hotel.id, hotel.access,hotel.name, hotel.address, hotel.cp, hotel.ktp, hotel.marriage_book, hotel.mushalla, hotel_type.name as type_hotel, st_x(st_centroid(hotel.geom)) as lon,st_y(st_centroid(hotel.geom)) as lat from hotel left join hotel_type on hotel_type.id=hotel.id_type where hotel.id='$id'");
 while($baris = mysqli_fetch_array($hasil)){
   $id=$baris['id'];
   $name_hotel=$baris['name'];
@@ -17,6 +17,7 @@ while($baris = mysqli_fetch_array($hasil)){
   $lng=$baris['lon'];
   $lat=$baris['lat'];
   $cp=$baris['cp'];
+  $access=$baris['access'];
   if ($lat=='' || $lng==''){
     $lat='<span style="color:red">Kosong</span>';
     $lng='<span style="color:red">Kosong</span>';
@@ -72,6 +73,11 @@ while($baris = mysqli_fetch_array($hasil3)){
 						<tr><td><b>Requirements</b></td> <td> :</td><td><?php echo $syarat ?></td></tr>
 						<tr><td><b>Mushalla<b> </td><td>: </td><td><?php echo $mushalla_stat ?></td></tr>
 						<tr><td><b>Hotel Type<b> </td><td>: </td><td><?php echo $hotel_type ?></td></tr>
+              <?php if ($access=="1") { ?>
+                <tr><td><b>Transport Access<b> </td><td>: </td><td>Bus</td></tr>
+              <?php }else { ?>
+                <tr><td><b>Transport Access<b> </td><td>: </td><td>No Bus</td></tr>
+              <?php } ?>
             <tr><td><b>Latitude<b> </td><td>: </td><td><?php echo $lat ?></td></tr>
             <tr><td><b>Longitude<b> </td><td>: </td><td><?php echo $lng ?></td></tr>
 					</tbody>

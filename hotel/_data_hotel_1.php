@@ -1,11 +1,13 @@
 <?php
-require '../connect.php';
-
+session_start();
+include("../connect.php");
+$city = $_SESSION['id'];
 $cari = $_GET["cari"];	//ID
 
 	//DATA HOTEL & TIPE HOTEL
-	$querysearch	="SELECT hotel.id, hotel.name, hotel.address, hotel.cp,
-	hotel.ktp, hotel.marriage_book, hotel.mushalla, hotel_type.name as type_hotel, st_x(st_centroid(hotel.geom)) as lon, st_y(st_centroid(hotel.geom)) as lat  from hotel left join hotel_type on hotel_type.id=hotel.id_type where hotel.id='$cari'";
+	$querysearch	="SELECT hotel.id, hotel.name, hotel.address, hotel.cp, hotel.access,
+	hotel.ktp, hotel.marriage_book, hotel.mushalla, hotel_type.name as type_hotel, st_x(st_centroid(hotel.geom)) as lon, st_y(st_centroid(hotel.geom)) as lat
+	from hotel left join hotel_type on hotel_type.id=hotel.id_type, city where city.id='$city' and st_contains(city.geom, hotel.geom) and hotel.id='$cari'";
 	$hasil=mysqli_query($conn, $querysearch);
 	while($baris = mysqli_fetch_array($hasil)){
 		  $id=$baris['id'];
@@ -13,14 +15,14 @@ $cari = $_GET["cari"];	//ID
 		  $address=$baris['address'];
 		  $cp=$baris['cp'];
 			$ktp=$baris['ktp'];
-		  $status=$baris['status'];
+		  $access=$baris['access'];
 		  $marriage_book=$baris['marriage_book'];
 		  $mushalla=$baris['mushalla'];
 		  $type_hotel=$baris['type_hotel'];
 		  $lat=$baris['lat'];
 		  $lng=$baris['lon'];
 
-	  $dataarray[]=array('id'=>$id,'name'=>$name,'address'=>$address,'cp'=>$cp, 'ktp'=>$ktp, 'status'=>$status, 'marriage_book'=>$marriage_book, 'mushalla'=>$mushalla, 'type_hotel'=>$type_hotel,'lng'=>$lng,'lat'=>$lat);
+	  $dataarray[]=array('id'=>$id,'name'=>$name, 'access'=>$access,'address'=>$address,'cp'=>$cp, 'ktp'=>$ktp, 'marriage_book'=>$marriage_book, 'mushalla'=>$mushalla, 'type_hotel'=>$type_hotel,'lng'=>$lng,'lat'=>$lat);
 	}
 
 	//DATA GALLERY
