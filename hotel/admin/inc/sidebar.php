@@ -22,7 +22,7 @@ $city     = $_SESSION['name'];
   <li class="sub-menu">
       <a href="?page=chart">
           <i class="fa fa-bar-chart-o"></i>
-          <span>Traffict</span>
+          <span>Web Analytics</span>
       </a>
   </li>
   <li class="sub-menu">

@@ -485,43 +485,52 @@ while($data = mysqli_fetch_array($query)) {
                       </header>
 
                       <div class="panel-body">
-                      <form method="POST" action="_add_comment.php">
-                        <input type="hidden" name="id" value="<?php echo $_GET['idgallery']?>" >
-                          <table id="" class="table">
-                            <tbody  style='vertical-align:top;'>
-                              <?php
-                                echo $username;
-                                if ($_SESSION['C'] == true)
-                                {
-                                ?>
-                                <tr>
-                                  <td>
-                                    <input type="text name='gidr'" id='gidr' value='' hidden=''>
-                                      <div id='star-containerz'> Rating :
-                                        <i class='fa fa-star star2' id='star2-1'></i>
-                                        <i class='fa fa-star star2' id='star2-2'></i>
-                                        <i class='fa fa-star star2' id='star2-3'></i>
-                                        <i class='fa fa-star star2' id='star2-4'></i>
-                                        <i class='fa fa-star star2' id='star2-5'></i>
-                                      </div>
-                                      <input type='text' name='rateid' id='rateid' value='' hidden=''>
-                                      <br>
-                                      Name :
-                                      <br> <input class='form-control' cols='40' rows='1' name='nama' readonly="" required="" value="<?php echo $username = $_SESSION['username'];?>">
-                                      <br>
-                                      Comment :
-                                      <br> <textarea class='form-control' cols='40' rows='5' name='comment' required=""></textarea>
-                                      <br>
-                                    <input type='submit' name='' class='btn btn-primary pull-right' style=" color: white" value='Post' >
-                                  </td>
-                                </tr>
+                        <?php
+                        $idh = $_GET['idgallery'];
+                        $cek = mysqli_query($conn, "SELECT * from review where name = '$username' and id_hotel = '$idh'");
+                        $ceks = mysqli_fetch_array($cek);
+                        if ($ceks == null) { ?>
+                          <form method="POST" action="_add_comment.php">
+                            <input type="hidden" name="id" value="<?php echo $_GET['idgallery']?>" >
+                              <table id="" class="table">
+                                <tbody  style='vertical-align:top;'>
+                                  <?php
+                                    // echo $username;
+                                    if ($_SESSION['C'] == true)
+                                    {
 
-                                <?php
-                                }
-                              ?>
-                            </tbody>
-                          </table>
-                        </form>
+                                    ?>
+                                    <tr>
+                                      <td>
+                                        <input type="text name='gidr'" id='gidr' value='' hidden=''>
+                                          <div id='star-containerz'> Rating :
+                                            <i class='fa fa-star star2' id='star2-1'></i>
+                                            <i class='fa fa-star star2' id='star2-2'></i>
+                                            <i class='fa fa-star star2' id='star2-3'></i>
+                                            <i class='fa fa-star star2' id='star2-4'></i>
+                                            <i class='fa fa-star star2' id='star2-5'></i>
+                                          </div>
+                                          <input type='text' name='rateid' id='rateid' value='' hidden=''>
+                                          <br>
+                                          Name :
+                                          <br> <input class='form-control' cols='40' rows='1' name='nama' readonly="" required="" value="<?php echo $username = $_SESSION['username'];?>">
+                                          <br>
+                                          Comment :
+                                          <br> <textarea class='form-control' cols='40' rows='5' name='comment' required=""></textarea>
+                                          <br>
+                                        <input type='submit' name='' class='btn btn-primary pull-right' style=" color: white" value='Post' >
+                                      </td>
+                                    </tr>
+
+                                    <?php
+                                    }
+                                  ?>
+                                </tbody>
+                              </table>
+                            </form>
+                      <?php  }
+                         ?>
+
 
                         <?php
                           require '../connect.php';

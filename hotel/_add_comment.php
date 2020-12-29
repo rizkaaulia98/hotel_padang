@@ -2,9 +2,6 @@
 
 include '../connect.php';
 
-
-		include '../connect.php';
-
 		$id = $_POST['id'];
 		$rating = $_POST['rateid'];
 		$nama = $_POST['nama'];
@@ -31,18 +28,18 @@ include '../connect.php';
 		//echo strpos($id,"RMasd");
 
 		// Cek username di database
-		$cek_username=mysqli_num_rows(mysqli_query
-             ($conn, "SELECT name FROM review
-               WHERE name='$nama'"));
-		 // Kalau username sudah ada yang pakai
-		if ($cek_username > 0){
-  echo "<script>alert ('You Had Reviewed This Hotel');</script>";
-	echo "<script>
-		eval(\"parent.location='gallery.php?idgallery=$id'\");
-		</script>";
-		}
+	// 	$cek_username=mysqli_num_rows(mysqli_query
+  //            ($conn, "SELECT name FROM review
+  //              WHERE name='$nama'"));
+	// 	 // Kalau username sudah ada yang pakai
+	// 	if ($cek_username > 0){
+  // echo "<script>alert ('You Had Reviewed This Hotel');</script>";
+	// echo "<script>
+	// 	eval(\"parent.location='gallery.php?idgallery=$id'\");
+	// 	</script>";
+	// 	}
 // Kalau username valid, inputkan data ke tabel users
-		else{
+		// else{
 
 		if(strpos($id,"HT") !== false)
 		{
@@ -78,7 +75,6 @@ include '../connect.php';
 			eval(\"parent.location='gallery.php?idgallery=$id'\");
 			</script>";
 
-}
 
 // $id = $_POST['id'];
 // $nama = $_POST['nama'];
