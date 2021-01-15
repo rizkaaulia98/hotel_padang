@@ -15,17 +15,17 @@ $city     = $_SESSION['name'];
               	  <?php if ($_SESSION['C']==true){ ?>
 
                     <?php if ($city=='Padang') { ?>
-                      <p class="centered"><a href="profile.php"><img src="../_foto/2.jpeg" class="img-circle" width="80"></a></p>
+                      <p class="centered"><a href="profile.php"><img src="../_foto/logo.jpeg" class="img-circle" width="80"></a></p>
                     <?php }else if ($city=='Bukittinggi') { ?>
-                      <p class="centered"><a href="profile.php"><img src="../_foto/3.jpg" class="img-circle" width="100"></a></p>
+                      <p class="centered"><a href="profile.php"><img src="../_foto/logo.jpeg" class="img-circle" width="80"></a></p>
                     <?php } ?>
                     <h5 class="centered">Hello, <?php echo $_SESSION['username'] ?>!</h5>
 
                   <?php }else{ ?>
                     <?php if ($city=='Padang') { ?>
-                      <p class="centered"><a href="profile.php"><img src="../_foto/2.jpeg" class="img-circle" width="80"></a></p>
+                      <p class="centered"><a href="profile.php"><img src="../_foto/logo.jpeg" class="img-circle" width="80"></a></p>
                     <?php }else if ($city=='Bukittinggi') { ?>
-                      <p class="centered"><a href="profile.php"><img src="../_foto/3.jpg" class="img-circle" width="100"></a></p>
+                      <p class="centered"><a href="profile.php"><img src="../_foto/logo.jpeg" class="img-circle" width="80"></a></p>
                     <?php } ?>
                     <h5 class="centered">Hello, Visitor!</h5>
                   <?php } ?>
@@ -140,7 +140,7 @@ $city     = $_SESSION['name'];
                       </ul>
                     </li>
 
-                    <li class="sub">
+                    <!-- <li class="sub">
                       <a style="cursor:pointer;background:none"><i class="fa fa-tasks"></i> Hotel Service</a>
                       <ul class="sub">
                         <li style="margin-top:10px">
@@ -163,7 +163,7 @@ $city     = $_SESSION['name'];
                         </li>
                         <li><a onclick="init();cari_hotel(4)" style="cursor:pointer;background:none">Search</a></li>
                       </ul>
-                    </li>
+                    </li> -->
 
                     <li class="sub">
                       <a style="cursor:pointer;background:none"><i class="fa fa-star"></i> Hotel Rating</a>

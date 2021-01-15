@@ -1,6 +1,8 @@
 <?php
 include ('../../../connect.php');
 session_start();
+$id_city  = $_SESSION['id'];
+$city     = $_SESSION['name'];
 if(isset($_POST['username'])){
 	$username = $_POST['username'];
 	$password = $_POST['password'];
@@ -11,10 +13,10 @@ if(isset($_POST['username'])){
 	$sql = mysqli_query($conn, "SELECT * FROM admin WHERE upper(username)=upper('$username') and password='$pass'");
 	$dt = mysqli_fetch_array($sql);
 	$num = mysqli_num_rows($sql);
-	if($num==1){		
+	if($num==1){
 		$_SESSION['username'] = $username;
 
-		if($dt['role']=='A'){		
+		if($dt['role']=='A'){
 			$_SESSION['A'] = true;
 			?><script language="JavaScript">document.location='../'</script><?php
 			echo "<script>alert (' hyyy');</script>";
@@ -26,7 +28,7 @@ if(isset($_POST['username'])){
 			{
 			echo "<script>
 			alert (' Your Period is Expired !');
-			eval(\"parent.location='../login.php '\");	
+			eval(\"parent.location='../login.php '\");
 			</script>";
 			}
 			$_SESSION['P'] = true;
@@ -53,13 +55,13 @@ if(isset($_POST['username'])){
 			echo "<script>
 		alert (' Check your account email to verify !');eval(\"parent.location='../login.php '\");	</script>";
 		}
-	
 
-		$result = mysqli_query($conn, "update admin set last_login = now() where username='$username'");	
+
+		$result = mysqli_query($conn, "update admin set last_login = now() where username='$username'");
 	}else{
 		echo "<script>
 		alert (' Login Failed, Please Fill Your Username and Password Correctly !');
-		eval(\"parent.location='../login.php '\");	
+		eval(\"parent.location='../login.php '\");
 		</script>";
 	}
 }

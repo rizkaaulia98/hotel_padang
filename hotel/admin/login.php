@@ -1,5 +1,7 @@
 <?php
 session_start();
+$id_city  = $_SESSION['id'];
+$city     = $_SESSION['name'];
 if(isset($_SESSION['A'])){
 	echo"<script language='JavaScript'>document.location='index.php'</script>";
     exit();
@@ -50,7 +52,7 @@ if(isset($_SESSION['A'])){
                     </a>
                 </div>
 		            <hr>
-                <a href="../" class="btn btn-theme btn-block"style="background:#26a69a;border-color:white">Back</a>
+                <a href="../../index.php" class="btn btn-theme btn-block"style="background:#26a69a;border-color:white">Back</a>
 		        </div>
 
 		      </form>

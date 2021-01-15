@@ -565,13 +565,21 @@ $.ajax({url: server+'_data_hotel_1.php?cari='+ids, data: "", dataType: 'json', s
     if (mushalla == 1) {
       mushalla_stat = "Exist"
     };
+
+    var acc = "-";
+    if (access == 1) {
+      acc = "Bus"
+    }else {
+      acc = "No Bus"
+    };
+
     console.log(name);
     $('#table_tengah_info').append(
       "<tr><td style='text-align:left'>Name</td> <td>:</td> <td style='text-align:left'> "+name+"</td></tr>"+
       "<tr><td style='text-align:left'>Address</td> <td>:</td> <td style='text-align:left'> "+address+"</td></tr>"+
       "<tr><td style='text-align:left'>Contact Person</td> <td>:</td> <td style='text-align:left'> "+cp+"</td></tr>"+
       "<tr><td style='text-align:left'>Requirements</td> <td>:</td> <td style='text-align:left'> "+syarat+"</td></tr>"+
-      "<tr><td style='text-align:left'>Transportation Access</td> <td>:</td> <td style='text-align:left'> "+access+"</td></tr>"+
+      "<tr><td style='text-align:left'>Transportation Access</td> <td>:</td> <td style='text-align:left'> "+acc+"</td></tr>"+
       "<tr><td style='text-align:left'>Mushalla</td> <td>:</td> <td style='text-align:left'> "+mushalla_stat+"</td></tr>"+
       "<tr><td style='text-align:left'>Type</td> <td>:</td> <td style='text-align:left'> "+type_hotel+"</td></tr>");
 
@@ -663,7 +671,7 @@ function cekNearBy(){
   $('#kanan_table').empty();
   $('#kanan_table1').show();
   $("#view_kanan_table1").show();
-  var stringHTML = "<tr><td colspan='3'><div class='checkbox'><label style='float:left'><input id='check_tw' type='checkbox'>Tourism</label></div><div class='checkbox'><label style='float:left'><input id='check_oo' type='checkbox' value=''> Souvenir </label></div><div class='checkbox'><label style='float:left'> <input id='check_m' type='checkbox' value=''>Worship</label></div><div class='checkbox'><label style='float:left'><input id='check_k' type='checkbox' value=''>Culinary</label></div><div class='checkbox'><label style='float:left'><input id='check_h' type='checkbox' value='5'>Hotel</label></div><label for='inputradius2' style='float: left; font-size: 10pt;'>Radius : </label><label  id='radiusobj'  style='float:left; font-size: 10pt;'>0</label> <span style='float:left;font-size: 10pt;'> m</span><input id='inputradius2' type='range' onchange='aktifkanRadius();radiusobejct();' name='inputradius' data-highlight='true' min='1' max='10' value='1'><div id='angkot_sekitar' class='centered'></div></td></tr>";
+  var stringHTML = "<tr><td colspan='3'><div class='checkbox'><label style='float:left'><input id='check_tw' type='checkbox'>Tourism Destination</label></div><div class='checkbox'><label style='float:left'><input id='check_oo' type='checkbox' value=''> Souvenir Store</label></div><div class='checkbox'><label style='float:left'> <input id='check_m' type='checkbox' value=''>Worship Place</label></div><div class='checkbox'><label style='float:left'><input id='check_k' type='checkbox' value=''>Culinary Place</label></div><div class='checkbox'><label style='float:left'><input id='check_h' type='checkbox' value='5'>Hotel</label></div><label for='inputradius2' style='float: left; font-size: 10pt;'>Radius : </label><label  id='radiusobj'  style='float:left; font-size: 10pt;'>0</label> <span style='float:left;font-size: 10pt;'> m</span><input id='inputradius2' type='range' onchange='aktifkanRadius();radiusobejct();' name='inputradius' data-highlight='true' min='1' max='10' value='1'><div id='angkot_sekitar' class='centered'></div></td></tr>";
   document.getElementById('kanan_table1').innerHTML = stringHTML;
   //$('#kanan_table').empty();
 
@@ -2223,6 +2231,7 @@ url: server+'_detail_angkot.php?id='+id, data: "", dataType: 'json', success: fu
       var ids = row.id;
       var destination = row.destination;
       var color = row.color;
+      var cost = row.cost;
       var lat = row.lat;
       var lng = row.lng;
       var lat2 = row.lat2;
@@ -2245,10 +2254,10 @@ $.ajax({url: server+'_data_angkot_1.php?cari='+id, data: "", dataType: 'json', s
     var destination = row.destination;
     var track = row.track;
     var cost = row.cost;
-    var number = row.number;
+    var type = row.type;
     var color = row.color;
     console.log(destination);
-    document.getElementById('mg_body').innerHTML="<h2>"+destination+"</h2><br><div style='margin-left:20px'>Track: "+track+"<br>Cost: "+cost+"<br>number: "+number+"<br>Color: "+color+"</div>";
+    document.getElementById('mg_body').innerHTML="<h2>"+destination+"</h2><br><div style='margin-left:20px'>Track: "+track+"<br>Type: "+type+"<br>Cost: "+cost+"<br>Color: "+color+"</div>";
   }//end for
 
   $('#modal_gallery').modal('show');

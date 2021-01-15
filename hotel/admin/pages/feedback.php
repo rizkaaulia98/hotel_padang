@@ -159,81 +159,13 @@ ul.tabs li a.active {
           $dataarray[]=array('id'=>$idhotel, 'rating'=>$rata,'review'=>$review);
         }
 
-        // rating perorang
-        // $querysearchs ="SELECT id_hotel AS id, count(*) as review, rating FROM review where id_hotel='$id'";
-        //
-        // $results=mysqli_query($conn, $querysearchs);
-        //
-        // while($rows = mysqli_fetch_array($results))
-        // {
-        //   $idhotels=$rows['id'];
-        //   $ratas=$rows['rating'];
-        //   $reviews=$rows['review'];
-        //
-        //   $dataarrays[]=array('id'=>$idhotels, 'rating'=>$ratas,'review'=>$reviews);
-        // }
-
 ?>
 <div class="col-sm-10">
     <section class="panel">
         <div class="panel-body">
           <div class="col-sm-12">
-          <div class="w3-container">
-            <div class="w3-row">
-              <a href="javascript:void(0)" onclick="openCity(event, 'Review');">
-                <div class="w3-third tablink w3-bottombar w3-hover-light-grey w3-padding">Review</div>
-              </a>
-              <a href="javascript:void(0)" onclick="openCity(event, 'Rating');">
-                <div class="w3-third tablink w3-bottombar w3-hover-light-grey w3-padding">Rating</div>
-              </a>
-            </div>
-            <div id="Review" class="w3-container feeds">
-              <h2><i class="fa fa-comment"></i>  Customer Review</h2>
-              <p>Total review: <?php echo $review; ?></p>
-              <div class="col-sm-8">
-                <table id="example3" class="table table-hover table-bordered table-striped" style="width: 580px;">
-                    <thead>
-                        <tr>
-                            <th style="width: 5px;">No</th>
-                            <th>Username</th>
-                            <th>Date</th>
-                            <th>Comments</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
 
-                    <tbody>
-                    <?php
-                        $sql = mysqli_query($conn, "SELECT review.* from review left join hotel on review.id_hotel=hotel.id where review.id_hotel='$id'");
-                        $no=0;
-                        while($data =  mysqli_fetch_array($sql)){
-                        $name = $data['name'];
-                        $id_review = $data['$id_review'];
-                        $date = $data['tanggal'];
-                        $comment = $data['comment'];
-                        $no++;
-
-                    ?>
-                        <tr>
-                            <td><?php echo "$no"; ?></td>
-                            <td><?php echo "$name"; ?></td>
-                            <td><?php echo "$date"; ?></td>
-                            <td><?php echo "$comment"; ?></td>
-
-                            <td>
-                                <div class="btn-group">
-                              <a href="act/delete_review.php?id=<?php echo $id_review; ?>" class="btn btn-sm btn-default" title='Delete'><i class="fa fa-trash-o"></i></a>
-                          </div>
-                            </td>
-                        </tr>
-                        <?php } ?>
-                    </tbody>
-                </table>
-              </div>
-            </div>
-
-            <div id="Rating" class="w3-container feeds" style="display:none">
-              <h2 ><i class="fa fa-star"></i>  Customer Rating</h2>
+              <h2 ><i class="fa fa-star"></i>  Customer Rating & Review</h2>
                     <div id='star-containerz' style="font-size: 16px">
 
                     <p> Rating Average: &nbsp;
@@ -254,77 +186,57 @@ ul.tabs li a.active {
                     </div><br>
 
               <div class="col-sm-8">
-                <table id="example3" class="table table-hover table-bordered table-striped" style="width: 80%;">
+                <table id="example3" class="table table-hover table-bordered table-striped" style="width: 100%;">
                     <thead>
                         <tr>
-                          <th style="width: 5px;">No</th>
-                            <th style="width: 30px;">Username</th>
-                            <th style="width: 50px;">Rating</th>
+                          <th >No</th>
+                          <th >Date</th>
+                          <th >Username</th>
+                            <th >Comment</th>
+                            <th >Rating</th>
+                            <th >Action</th>
                         </tr>
                     </thead>
 
                     <tbody>
                       <?php
-                          $sql = mysqli_query($conn, "SELECT review.rating, review.name from review join admin on review.name=admin.username left join hotel on review.id_hotel=hotel.id where review.id_hotel='$id'");
+                          $sql = mysqli_query($conn, "SELECT review.* from review join admin on review.name=admin.username left join hotel on review.id_hotel=hotel.id where review.id_hotel='$id'");
                           $no=0;
                           while($data =  mysqli_fetch_array($sql)){
-                          $username = $data['name'];
-                          $rating = $data['rating'];
-                          $no++;
+                            $name = $data['name'];
+                            $id_review = $data['id_review'];
+                            $date = $data['tanggal'];
+                            $comment = $data['comment'];
+                            $rating = $data['rating'];
+                            $no++;
 
                       ?>
 
                         <tr>
-                          <td style="width: 5px;"><?php echo "$no"; ?></td>
-                            <td style="width: 30px;"><?php echo "$username"; ?></td>
-                            <td style="width: 50px;">
+                          <td ><?php echo "$no"; ?></td>
+                          <td ><?php echo "$date"; ?></td>
+                          <td ><?php echo "$name"; ?></td>
+                            <td ><?php echo "$comment"; ?></td>
+                            <td >
                               <i style="font-size: 9px;"class="fa fa-star star2 <?php echo $rating >= 1 ? "star-checked" : ""; ?>"></i>
                               <i style="font-size: 9px;" class="fa fa-star star2 <?php echo $rating >= 2 ? "star-checked" : ""; ?>"></i>
                               <i style="font-size: 9px;" class="fa fa-star star2 <?php echo $rating >= 3 ? "star-checked" : ""; ?>"></i>
                               <i style="font-size: 9px;" class="fa fa-star star2 <?php echo $rating >= 4 ? "star-checked" : ""; ?>"></i>
                               <i style="font-size: 9px;" class="fa fa-star star2 <?php echo $rating == 5 ? "star-checked" : ""; ?>"></i>
                             </td>
+                            <td>
+                                <div class="btn-group">
+                              <a href="act/delete_review.php?id=<?php echo $id_review; ?>" class="btn btn-sm btn-default" title='Delete'><i class="fa fa-trash-o"></i></a>
+                          </div>
                             </td>
                         </tr>
                         <?php } ?>
                     </tbody>
                 </table>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </section>
 </div>
-
-<script>
-// function tabSwitch(new_tab, new_content) {
-//
-//     document.getElementById('content_1').style.display = 'none';
-//     document.getElementById('content_2').style.display = 'none';
-//     document.getElementById(new_content).style.display = 'block';
-//
-//
-//     document.getElementById('tab_1').className = '';
-//     document.getElementById('tab_2').className = '';
-//     document.getElementById(new_tab).className = 'active';
-//
-// }
-function openCity(evt, cityName) {
-  var i, x, tablinks;
-  x = document.getElementsByClassName("feeds");
-  for (i = 0; i < x.length; i++) {
-    x[i].style.display = "none";
-  }
-  tablinks = document.getElementsByClassName("tablink");
-  for (i = 0; i < x.length; i++) {
-    tablinks[i].className = tablinks[i].className.replace(" w3-border-teal", "");
-  }
-  document.getElementById(cityName).style.display = "block";
-  evt.currentTarget.firstElementChild.className += " w3-border-teal";
-}
-</script>
-
 <script type="text/javascript">
     var id_cek = 0;
     function r(){

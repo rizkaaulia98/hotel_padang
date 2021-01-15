@@ -13,8 +13,8 @@ ISI TIPE:
 	2 => Adress
 	3 => Tipe
 	4 => Service
-	5 => rating
-	6 => room's price
+	5 => room's price
+	6 => rating
 	7 => facility_hotel
 	8 => Access
 */
@@ -40,9 +40,9 @@ if ($tipe == 1) {
 		JOIN hotel on detail_room.id_hotel=hotel.id, city WHERE city.id = '$city' AND ST_CONTAINS(city.geom, hotel.geom)
 		AND detail_room.price between '$nilai' and '$nilai2')";
 } elseif ($tipe == 6) {
-	$querysearch = "SELECT hotel.id, hotel.name,  ST_X(ST_Centroid(hotel.geom)) AS lon, ST_Y(ST_CENTROID(hotel.geom)) As lat, avg(review.rating)as rata
-	from hotel JOIN review on hotel.id=review.id_hotel, city group by review.id_hotel having avg(review.rating) = '$nilai - 1' and '$nilai'
-	where city.id = '$city' AND st_contains(city.geom, hotel.geom) AND order by rata desc ";
+	$querysearch = "SELECT hotel.id, hotel.name,  ST_X(ST_Centroid(hotel.geom)) AS lon, ST_Y(ST_CENTROID(hotel.geom)) As lat, FLOOR(AVG(review.rating)) AS rating
+	from hotel JOIN review on hotel.id=review.id_hotel, city
+	where city.id = 'CT01' AND st_contains(city.geom, hotel.geom) group by review.id_hotel having rating <= $nilai and rating > $nilai-1 order by hotel.name";
 }elseif ($tipe == 7) {
 	$querysearch ="SELECT hotel.id as id, hotel.name, ST_X(ST_Centroid(hotel.geom)) AS lon, ST_Y(ST_CENTROID(hotel.geom)) As lat
 	FROM hotel WHERE id IN(SELECT DISTINCT hotel.id FROM detail_facility_hotel

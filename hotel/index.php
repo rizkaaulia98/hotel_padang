@@ -543,7 +543,7 @@ session_start();
                       <div id="view_kanan_table1" class="col-md-4 col-sm-4 mb" style="margin-top:0px; display:none;">
                         <div class="white-panel pns">
                            <div class="white-header" style="height:40px;margin:20px;background:white;color:black">
-                             <h5 class="btn btn-compose" id="judul_table">Object Arround</h5>
+                             <h5 class="btn btn-compose" id="judul_table">Object Nearby</h5>
                            </div>
                            <div class="row">
                              <div class="col-sm-6 col-xs-6"></div>
@@ -562,7 +562,7 @@ session_start();
                       <div id="view_table_sekitar" class="col-md-4 col-sm-4 mb" style="display:none">
                         <div class="white-panel pns" style="height:510px">
                            <div class="white-header" style="height:40px;margin:20px;margin-top:0px;background:white;color:black">
-                             <h5 class="btn btn-compose">Search Results Object Around</h5>
+                             <h5 class="btn btn-compose">Search Results Object Nearby</h5>
                            </div>
                            <div class="row">
                              <div class="col-sm-6 col-xs-6"></div>
@@ -592,7 +592,7 @@ session_start();
                       <div id="view_table_sekitar1" class="col-md-4 col-sm-4 mb" style="display:none">
                         <div class="white-panel pns" style="height:510px">
                            <div class="white-header" style="height:40px;margin:20px;margin-top:0px;background:white;color:black">
-                             <h5 class="btn btn-compose">Search Results Object Around</h5>
+                             <h5 class="btn btn-compose">Search Results Object Nearby</h5>
                            </div>
                            <div class="row">
                              <div class="col-sm-6 col-xs-6"></div>
