@@ -11,14 +11,14 @@ $emailadd = $_POST['email'];
 
     $query = "insert into admin (username, password, hp, address, name, email) values ('".$username."','".$password."','".$cp."','".$address."','".$nama."','".$emailadd."')";
 
-    $cek = pg_query($query);
+    $cek = mysqli_query($conn, $query);
 
   $token = date("Ymdhi").$username;
-$homepage = file_get_contents("http://localhost/html/mailtemplate.php?token=$token&user=$username");
+$homepage = file_get_contents("http://localhost/hotel_padang1/mailtemplate.php?token=$token&user=$username");
 
   if($cek)
   {
-    require '../../../PHPMailer/class.phpmailer.php';
+    require '../../PHPMailer/class.phpmailer.php';
 
     $mail = new PHPMailer(); // create a new object
     $mail->isSMTP();
@@ -32,11 +32,11 @@ $homepage = file_get_contents("http://localhost/html/mailtemplate.php?token=$tok
     $mail->CharSet = "UTF-8";
     // To here. 'cause default secure is TLS.
 
-    $mail->setFrom("widyaw1996@gmail.com", "SISTEM INFORMASI BKT Tourism");
-    $mail->Username = "widyaw1996@gmail.com";
-    $mail->Password = "Widya1996widya";
+    $mail->setFrom("auliarizkaa98@gmail.com", "Sistem Informasi Pariwisata Halal Hotel");
+    $mail->Username = "auliarizkaa98@gmail.com";
+    $mail->Password = "Auliaaa98!";
 
-    $mail->Subject = "SISTEM INFORMASI BKT Tourism";
+    $mail->Subject = "Sistem Informasi Pariwisata Halal Hotel";
 
     $mail->addAddress("$emailadd", "$nama");
     $mail->msgHTML($homepage);
@@ -45,11 +45,11 @@ $homepage = file_get_contents("http://localhost/html/mailtemplate.php?token=$tok
 
   $mail->ErrorInfo;
   } else {
-    header('location:http://localhost/html/hotel/admin/checkemailjo.php');
+    header('location:http://localhost/hotel_padang1/hotel/admin/checkemailjo.php');
   }
 
   }
   else{
-    echo "gagal";
+    echo "ERROR";
   }
 ?>

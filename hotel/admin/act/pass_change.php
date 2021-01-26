@@ -14,7 +14,7 @@ $username = $_POST["user"];
 	if ($count == 1 && $passwordbaru==$konfirmasipassword){
 	$queryupdate = mysqli_query($conn, "update admin set password = '$passbaru' where username = '$username'");
 		if($queryupdate){
-		echo "<script>alert ('Password Successfully Change');</script>";
+		echo "<script>alert ('Password Successfully Updated');</script>";
 		}
 	}
 	else {

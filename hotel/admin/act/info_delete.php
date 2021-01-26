@@ -7,7 +7,7 @@ echo "$id_info --> id_info, $id_hotel= hotel";
 	$sql1   = "delete from information_admin where id_informasi = $id_info";
 	$delete1 = mysqli_query($conn, $sql1);
 	if ($delete1){
-		echo "<script>alert ('Data Successfully Delete');</script>";
+		echo "<script>alert ('Data Successfully Deleted');</script>";
 		if($_SESSION['A']===true){
 		header("location:../?page=hotel_detail&id=$id");
 		}

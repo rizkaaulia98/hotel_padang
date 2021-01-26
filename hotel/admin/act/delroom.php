@@ -9,7 +9,7 @@ echo $id_hotel;
 	$delete1 = mysqli_query($conn, $sql1);
 	if ($delete1){
 	echo "<script>
-		alert (' Data Successfully Delete');
+		alert (' Data Successfully Deleted');
 		eval(\"parent.location='../indexu.php'\");
 		</script>";
 	}

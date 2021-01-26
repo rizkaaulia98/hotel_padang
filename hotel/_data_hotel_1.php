@@ -35,7 +35,8 @@ $cari = $_GET["cari"];	//ID
     }
 
     //DATA FASILITAS
-    $query_fasilitas="SELECT facility_hotel.id, facility_hotel.name FROM facility_hotel left join detail_facility_hotel on detail_facility_hotel.id_facility = facility_hotel.id left join hotel on hotel.id = detail_facility_hotel.id_hotel where hotel.id = '".$cari."' ";
+    $query_fasilitas="SELECT facility_hotel.id, facility_hotel.name FROM facility_hotel left join detail_facility_hotel
+		on detail_facility_hotel.id_facility = facility_hotel.id left join hotel on hotel.id = detail_facility_hotel.id_hotel where hotel.id = '".$cari."' ";
     $hasil3=mysqli_query($conn, $query_fasilitas);
     while($baris = mysqli_fetch_array($hasil3)){
         $id=$baris['id'];
@@ -56,11 +57,7 @@ $cari = $_GET["cari"];	//ID
         $data_kamar[]=array('id_room'=>$id_room, 'id_hotel'=>$id_hotel, 'available'=>$available, 'name'=>$name,'price'=>$price,'sisa'=>$sisa);
     }
 
-
-
     //OUTPUT
     $arr=array("data"=>$dataarray, "gallery"=>$data_gallery, "fasilitas"=>$data_fasilitas, "kamar"=>$data_kamar);
     echo json_encode($arr);
-
-
 ?>

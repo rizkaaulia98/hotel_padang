@@ -14,7 +14,7 @@ $id_type = $_GET['id_type'];
 	$sql   = "delete from room where id_type=$id_type";
 	$delete = mysqli_query($conn, $sql);
 	if ($delete){
-		echo "<script>alert ('Data Successfully Delete');</script>";
+		echo "<script>alert ('Data Successfully Deleted');</script>";
 	}
 	else{
 		echo "<script>alert ('Error');</script>";

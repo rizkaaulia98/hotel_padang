@@ -301,7 +301,6 @@ session_start();
                   <div class="row">
                       <div class="col-md-12 col-sm-12 mb">
                         <div class="white-panel pns">
-
                           <header class="panel-heading" style="float:left">
                             <label style="color: black; margin-right:20px">Google Map with Location List</label>
                             <input type="hidden" id="myLatLocation" value="0">
@@ -310,14 +309,11 @@ session_start();
                             <a class="btn btn-default" role="button" style="background-color: #26a69a" data-toggle="collapse" onclick="lokasimanual()" title=" Manual Position" ><i class="fa fa-map-marker" style="color:white;"></i></a>
                             <label id="tombol">
                             <a class="btn btn-default" role="button" style="background-color: #26a69a" id="showlegenda" data-toggle="collapse" onclick="legenda()" title="Legend"   ><i class="fa fa-eye" style="color:white;"></i></a></label>
-
                           </header>
-
                            <div class="row">
                              <div class="col-sm-6 col-xs-6"></div>
                            </div>
-                           <div id="map" class="centered" style="height:460px">
-                           </div>
+                           <div id="map" class="centered" style="height:460px"></div>
                         </div>
                       </div><!-- /col-md-12 -->
                   </div><!-- /row -->

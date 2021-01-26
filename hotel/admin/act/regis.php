@@ -14,6 +14,7 @@ $emailadd = $_POST['email'];
 
 
 $uname = mysqli_num_rows(mysqli_query($conn, "SELECT * from admin where username='$username'"));
+// $maile = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM admin WHERE email = '$emailadd'"));
 if($uname > 0)
 {
   echo "<script>alert ('This username has used by another user, try another username ');
@@ -42,7 +43,7 @@ $homepage = file_get_contents("../../../mailtemplate.php");
     $mail->Host = "smtp.gmail.com";
     $mail->SMTPAuth = true;
     $mail->Username = "auliarizkaa98@gmail.com";
-    $mail->Password = "kabataku123";
+    $mail->Password = "Auliaaa98!";
 
     // But you can comment from here
     $mail->SMTPSecure = "tls";
@@ -55,7 +56,7 @@ $homepage = file_get_contents("../../../mailtemplate.php");
 
 
   //nama penerima
-    $mail->Subject = "Verification For New User Of WebGIS Padang Hotel";
+    $mail->Subject = "Verification For New User Of SIPH Hotel";
 
     $mail->addAddress("$emailadd", "$nama");
     $mail->msgHTML("<!DOCTYPE html>
@@ -87,11 +88,11 @@ $homepage = file_get_contents("../../../mailtemplate.php");
 <body>
   <div id='container'>
     <div id='header'>
-      <h2>EMAIL VERIFICATION Padang Tourism</h2>
+      <h2>Email Verification SIPH Hotel</h2>
     </div>
     <div id='badan'>
       <p>Click the link below to verify your account</p>
-      <a href='https://gissurya.org/hotel/admin/pages/verifikasi.php?token=$token&user=$username'>Click on this link to confirm your email</a> <!-- EDIT UNTUK HOSTING -->
+      <a href='https://gissurya.org/hotel_bkt/admin/pages/verifikasi.php?token=$token&user=$username'>Click on this link to confirm your email</a> <!-- EDIT UNTUK HOSTING -->
     </div>
     <div id='kaki'>
       <h3>Have A Nice Day, $username !</h3>

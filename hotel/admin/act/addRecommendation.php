@@ -8,7 +8,7 @@ $grade = $_POST['grade'];
 $sql = mysqli_query($conn, "INSERT INTO hotel_recommendation(id_hotel, id_kategori,grade)
 VALUES ('$hotel', '$category', '$grade')");
 if ($sql){
- echo "<script>alert ('Data Successfully Updated');</script>";
+ echo "<script>alert ('Data Successfully Added');</script>";
 }else{
  echo "<script>alert ('Error');</script>";
 }

@@ -27,7 +27,7 @@
 <body>
 	<div id="container">
 		<div id="header">
-			<h2>EMAIL VERIFICATION BKT Tourism</h2>
+			<h2>Email Verification SIPH</h2>
 		</div>
 		<div id="badan">
 			<p>Click the link below to verify your account</p>

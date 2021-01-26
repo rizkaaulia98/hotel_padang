@@ -4,14 +4,6 @@
     $latit = $_GET['lat'];
     $longi = $_GET['lng'];
 	$rad=$_GET['rad']/1000;
-
-	// $querysearch="SELECT id, name, st_x(st_centroid(geom))
-	// as lng, st_y(st_centroid(geom))
-	// as lat, st_distance_sphere(ST_GeomFromText('POINT(".$longi." ".$latit.")',-1), hotel.geom)
-	// as jarak
-	// FROM hotel
-	// where st_distance_sphere(ST_GeomFromText('POINT(".$longi." ".$latit.")',-1), hotel.geom) <= ".$rad."";
-
 	$querysearch = "SELECT
 												id, (
 													6371 * acos (

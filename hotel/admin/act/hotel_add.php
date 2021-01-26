@@ -23,7 +23,6 @@ if ($sql){
 	echo "<script>alert ('Data Successfully Added');</script>";
 }else{
 	echo "<script>alert ('Error');</script>";
-  // trigger_error("Query Failed! SQL: $sql - Error: ".mysqli_error($sql), E_USER_ERROR);
 }
 echo "<script>eval(\"parent.location='../index.php?page=hotel_add'\");</script>";
 

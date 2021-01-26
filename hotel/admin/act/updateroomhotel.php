@@ -12,7 +12,7 @@ $sql  = "UPDATE detail_room set name='$name', price = '$price', available = '$av
 $update = mysqli_query($conn, $sql);
 
 if ($update){
-	echo "<script>alert ('Data Successfully Change');
+	echo "<script>alert ('Data Successfully Updated');
 	eval(\"parent.location='../indexu.php?page=hotel_owner&id=$id_hotel'\");
 	</script>";
 

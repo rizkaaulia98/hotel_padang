@@ -22,11 +22,11 @@ $sql = mysqli_query($conn, "UPDATE hotel set id='$id', name='$nama', address='$a
 	if ($sql){
 
 		if($_SESSION['A']==true){
-			echo "<script>alert ('Data Successfully Added');</script>";
+			echo "<script>alert ('Data Successfully Updated');</script>";
 		echo "<script>eval(\"parent.location='../index.php?page=hotel_detail&id=$id '\");</script>";
 		}
 		else{
-			echo "<script>alert ('Data Successfully Added');</script>";
+			echo "<script>alert ('Data Successfully Updated');</script>";
 			echo "<script>eval(\"parent.location='../indexu.php?page=hotel_owner&id=$id '\");</script>";
 		}
 	}

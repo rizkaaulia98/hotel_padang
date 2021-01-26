@@ -20,7 +20,7 @@ $insert = mysqli_query($conn, $sql);
 
 if ($insert)
 	{
-	echo "<script>alert ('Data Successfully Change');</script>";
+	echo "<script>alert ('Data Successfully Updated');</script>";
 	}
 else
 	{

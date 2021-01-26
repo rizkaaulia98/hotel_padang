@@ -7,7 +7,7 @@ $sql  = "DELETE from hotel_recommendation where id_hotel='$id_hotel' and id_kate
 $update = mysqli_query($conn, $sql);
 
 if ($update){
-	echo "<script>alert ('Data Successfully Change');
+	echo "<script>alert ('Recommendation Successfully Deleted');
 	eval(\"parent.location='../index.php?page=setRecommendation'\");
 	</script>";
 
@@ -17,11 +17,4 @@ if ($update){
 	</script>";
 
 }
-// header("location:../?page=formsetR&id=$id_hotel");
-//
-// 	if($_SESSION['A']===true){
-// 	header("location:../?page=hotel_detail&id=$id_hotel");}
-// 	else{
-// 		header("location:../?page=hotel_detail&id=$id_hotel");
-// 	}
 ?>

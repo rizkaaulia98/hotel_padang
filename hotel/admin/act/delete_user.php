@@ -8,7 +8,7 @@ echo $id;
 	$delete1 = mysqli_query($conn, $sql1);
 	$delete = mysqli_query($conn, $sql);
 	if ($delete){
-		echo "<script>alert ('Data Successfully Delete');</script>";
+		echo "<script>alert ('Data Successfully Deleted');</script>";
 	}
 	else{
 		echo "<script>alert ('Error');</script>";

@@ -64,7 +64,6 @@ function basemap(){   // GOOGLE MAP
           mapTypeId: google.maps.MapTypeId.ROADMAP
       });
   }
-
 }
 
 function kecamatanTampil(){   // PENAMPILAN PEMBAGIAN KECAMATAN
@@ -1040,6 +1039,7 @@ MENU 2 TOURISM DISEKITAR
 *********************************************************************************************************************************************************** */
 
 function hotel_sekitar_user(){ // Menu Angkot Sekitar
+$('#galleryrecommendxxx').hide();
 hapus_Semua();
 hapus_menu();
 
@@ -2435,7 +2435,7 @@ var url;
 if (id.includes("HT")) {
   url = "_detail_hotel.php";
 } else if (id.includes("TM")) {
-  url = "_detail_angkot.php";
+  url = "_detail_tourism.php";
 } else if (id.includes("SO")) {
   url = "_detail_souvenir.php";
 } else if (id.includes("RM")) {

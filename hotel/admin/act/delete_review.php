@@ -8,7 +8,7 @@ echo $id;
 	$sql   = "DELETE from review where id_review='$id'";
 	$delete = mysqli_query($conn, $sql);
 	if ($delete){
-		echo "<script>alert ('Data Successfully Delete');</script>";
+		echo "<script>alert ('Data Successfully Deleted');</script>";
 	}
 	else{
 		echo "<script>alert ('Error');</script>";

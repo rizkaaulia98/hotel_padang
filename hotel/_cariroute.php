@@ -4,7 +4,7 @@
 
 	$id_a = $_GET["id_angkot"];
 
-	// PENCARIAN OBJEK WISATA DISEPANJANG JALUR ANGKOT //
+	// PENCARIAN Hotel DISEPANJANG JALUR ANGKOT //
 
 	$querysearch = "SELECT FLOOR(111045 * DEGREES(acos(
                 cos( radians(st_y(st_centroid(hotel.geom))) )

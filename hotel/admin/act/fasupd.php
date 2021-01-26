@@ -17,7 +17,7 @@ $sqll = rtrim($sqll,",");
 $insert = mysqli_query($conn, $sqll);
 if ($insert && $delete){
 	echo "<script>
-		alert (' Data Successfully Change');
+		alert (' Data Successfully Updated');
 		</script>";
 	header("location:../index1.php?page=content&id=$id");
 }

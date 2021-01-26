@@ -8,8 +8,6 @@ if(isset($_POST['username'])){
 	$password = $_POST['password'];
 	$name = $_POST['name'];
 	$pass = md5(md5($password));
-
-	//$pass=$password;
 	$sql = mysqli_query($conn, "SELECT * FROM admin WHERE upper(username)=upper('$username') and password='$pass'");
 	$dt = mysqli_fetch_array($sql);
 	$num = mysqli_num_rows($sql);
@@ -45,8 +43,6 @@ if(isset($_POST['username'])){
 			$_SESSION['username']=$dt['username'];
 			$_SESSION['id']=$dt['id'];
 			$_SESSION['name']=$dt['name'];
-			// $query=pg_query("select * from hotel where id='$dt[id]'");
-			// $data=pg_fetch_assoc($query);
 			$_SESSION['id']=$data['id'];
 			?><script language="JavaScript">document.location='../../index.php'</script><?php
 
@@ -55,7 +51,6 @@ if(isset($_POST['username'])){
 			echo "<script>
 		alert (' Check your account email to verify !');eval(\"parent.location='../login.php '\");	</script>";
 		}
-
 
 		$result = mysqli_query($conn, "update admin set last_login = now() where username='$username'");
 	}else{

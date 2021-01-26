@@ -18,3 +18,4 @@ $result=mysqli_query($conn, $querysearch);
 		    $dataarray[]=array('id'=>$id,'nama'=>$nama,'longitude'=>$longitude,'latitude'=>$latitude);
     }
    echo json_encode ($dataarray);
+?>

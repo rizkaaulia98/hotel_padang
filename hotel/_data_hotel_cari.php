@@ -42,7 +42,7 @@ if ($tipe == 1) {
 } elseif ($tipe == 6) {
 	$querysearch = "SELECT hotel.id, hotel.name,  ST_X(ST_Centroid(hotel.geom)) AS lon, ST_Y(ST_CENTROID(hotel.geom)) As lat, FLOOR(AVG(review.rating)) AS rating
 	from hotel JOIN review on hotel.id=review.id_hotel, city
-	where city.id = 'CT01' AND st_contains(city.geom, hotel.geom) group by review.id_hotel having rating <= $nilai and rating > $nilai-1 order by hotel.name";
+	where city.id = '$city' AND st_contains(city.geom, hotel.geom) group by review.id_hotel having rating <= $nilai and rating > $nilai-1 order by hotel.name";
 }elseif ($tipe == 7) {
 	$querysearch ="SELECT hotel.id as id, hotel.name, ST_X(ST_Centroid(hotel.geom)) AS lon, ST_Y(ST_CENTROID(hotel.geom)) As lat
 	FROM hotel WHERE id IN(SELECT DISTINCT hotel.id FROM detail_facility_hotel

@@ -19,7 +19,7 @@ while($baris = mysqli_fetch_array($hasil)){
 }
 
 	//DATA GALLERY
-    $query_gallery="SELECT serial_number, gallery_tourism FROM tourism_gallery where id = '".$cari."' "; 
+    $query_gallery="SELECT serial_number, gallery_tourism FROM tourism_gallery where id = '".$cari."' ";
     $hasil2=mysqli_query($conn, $query_gallery);
     while($baris = mysqli_fetch_array($hasil2)){
         $serial_number=$baris['serial_number'];
@@ -28,7 +28,7 @@ while($baris = mysqli_fetch_array($hasil)){
     }
 
     //DATA FASILITAS
-    $query_fasilitas="SELECT facility_tourism.id, facility_tourism.name FROM facility_tourism left join detail_facility_tourism on detail_facility_tourism.id_facility = facility_tourism.id left join tourism on tourism.id = detail_facility_tourism.id_tourism where tourism.id = '".$cari."' "; 
+    $query_fasilitas="SELECT facility_tourism.id, facility_tourism.name FROM facility_tourism left join detail_facility_tourism on detail_facility_tourism.id_facility = facility_tourism.id left join tourism on tourism.id = detail_facility_tourism.id_tourism where tourism.id = '".$cari."' ";
     $hasil3=mysqli_query($conn, $query_fasilitas);
     while($baris = mysqli_fetch_array($hasil3)){
         $id=$baris['id'];

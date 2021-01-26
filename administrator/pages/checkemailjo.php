@@ -8,13 +8,13 @@
     <meta name="author" content="Dashboard">
     <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 
-    <title>BUKITTINGGI TOURISM</title>
+    <title>SIPH</title>
 
     <!-- Bootstrap core CSS -->
     <link href="assets/css/bootstrap.css" rel="stylesheet">
     <!--external css-->
     <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
-        
+
     <!-- Custom styles for this template -->
     <link href="assets/css/style.css" rel="stylesheet">
     <link href="assets/css/style-responsive.css" rel="stylesheet">
@@ -28,10 +28,10 @@
 
 	  <div id="login-page">
 	  	<div class="container">
-	  	        <h1>Email Notifikasi Telah dikirim Ke Email Anda, Klick Link Untuk Verifikasi</h1> 	
+	  	        <h1>Email Notifikasi Telah dikirim Ke Email Anda, Klick Link Untuk Verifikasi</h1>
 	  	</div>
 	  </div>
-	 
+
     <!-- js placed at the end of the document so the pages load faster -->
     <script src="assets/js/jquery.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
