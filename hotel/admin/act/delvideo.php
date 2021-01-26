@@ -4,13 +4,16 @@ include ('../../../connect.php');
 session_start();
 $ih = $_GET['id_hotel'];
 // $sn = $_GET['sn'];
-$p = $_GET['id_photo'];
+$p = $_GET['id_video'];
 
-	$i = mysqli_query($conn, "SELECT * FROM hotel_gallery WHERE gallery_hotel ='$p' ");
+// echo $ih;
+// echo $p;
+
+	$i = mysqli_query($conn, "SELECT * FROM hotel_video WHERE video ='$p' ");
 	$u =mysqli_fetch_array($i);
 
-	if(is_file("../../../_foto/".$u['gallery_hotel'])) unlink("../../../_foto/".$u['gallery_hotel']);
-	mysqli_query($conn, "DELETE FROM hotel_gallery WHERE gallery_hotel='$p' ");
+	if(is_file("../../../_video/".$u['video'])) unlink("../../../_video/".$u['video']);
+	mysqli_query($conn, "DELETE FROM hotel_video WHERE video='$p' ");
 	// header("location:../indexu.php?page=hotel_owner&id=$ih");
 	echo "<script>
 		alert (' Data Successfully Deleted');

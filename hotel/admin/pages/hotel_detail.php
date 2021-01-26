@@ -72,7 +72,7 @@ while($baris = mysqli_fetch_array($hasil4)){
               <thead>
                 <tr>
                   <td width="450px"><h3 class="box-title"><b>Detail Of <?php echo $name_hotel; ?></b></h3></td>
-                  <td><a href="?page=hotel_update&id=<?php echo $id ?>" class='btn btn-default'><i class="fa fa-edit"></i></a></td>
+                  <td><a href="?page=hotel_update&id=<?php echo $id ?>" class='btn btn-default' title="Edit Hotel"><i class="fa fa-edit"></i></a></td>
                 </tr>
               </thead>
             </table> <hr>
@@ -101,9 +101,9 @@ while($baris = mysqli_fetch_array($hasil4)){
            <div >
              <!-- <a href="" type="button" class="btn btn-sm btn-default" data-toggle="modal" data-target="#addR<?php echo $baris['id']; ?>"><i class="fa fa-plus"></i> Set Rooms</a> -->
              <h4>Rooms: </h4>
-             <table class="table-bordered" width="80%">
+             <table class="w3-table" width="80%">
                <thead>
-                 <tr>
+                 <tr class="w3-teal">
                    <th>Room</th>
                    <th>Price</th>
                    <th>Available</th>
@@ -141,7 +141,7 @@ while($baris = mysqli_fetch_array($hasil4)){
            <div>
              <!-- <a href="" type="button" class="btn btn-sm btn-default" data-toggle="modal" data-target="#addF<?php echo $baris['id']; ?>"><i class="fa fa-plus"></i> Set Facilities</a> -->
              <h4>Facilities:</h4>
-             <table class="table-hover table-bordered " width="50%">
+             <table class="w3-table" width="50%">
 
                <tbody>
                  <?php
@@ -168,7 +168,12 @@ while($baris = mysqli_fetch_array($hasil4)){
        <!-- add info -->
        <section class="panel">
          <div class="panel-body">
-           <div class="btn-group"><a class='btn btn-round' role='button' data-toggle='collapse' href='#info' onclick='' title='Nearby' aria-controls='Nearby'><i class='fa fa-plus' style='color:black;'></i><label>&nbsp Add Info</label></a></div>
+           <div class="btn-group">
+             <a class="btn btn-round" role="button" data-toggle="collapse" href="#info" onclick='' title='Nearby' aria-controls='Nearby'>
+               <i class='fa fa-plus' style='color:#26a69a;'></i>
+               <label style="color: #26a69a;">&nbsp; Add Info</label>
+             </a>
+           </div>
 
  				<div class='collapse' id='info'>
  					<form method="post" action="act/addinfo.php">
@@ -176,8 +181,8 @@ while($baris = mysqli_fetch_array($hasil4)){
  						<input type="text" class="form-control hidden " id="admin" name="admin" value="<?php echo $admin ?>">
  						<table class="table">
  							<tbody  style='vertical-align:top;'>
- 								<tr><td><b>Essential Information :</td><td><textarea cols="40" rows="5" name="info"></textarea></td></tr>
- 		            <tr><td><input type="submit" value="Post Information"/></td><td></td></tr>
+ 								<tr><td><b>Essential Information :</td><td><textarea cols="30" rows="5" name="info"></textarea></td></tr>
+                  <tr><td><button type="submit" class="btn btn-theme btn-block" style="background:#26a69a;border-color:white; width:100%; height: 35px;"><i class="icon-pencil7"></i>&nbsp;Post Information</button></td></tr>
               </tbody>
  						</table>
  					</form>
@@ -200,15 +205,15 @@ while($baris = mysqli_fetch_array($hasil4)){
 
                        $result = mysqli_query($conn, $sqlreview);
                      ?>
-                     <table class="table">
-                     	<thead><th>Tanggal</th><th>Info</th><th>action</th></thead>
+                     <table class="w3-table">
+                     	<thead class="w3-teal"><th>Tanggal</th><th>Info</th><th>action</th></thead>
                      <?php
                        while ($rows = mysqli_fetch_array($result))
                          {
                            $tgl = $rows['tanggal'];
                            $info = $rows['informasi'];
                            $id_info =$rows['id_informasi'];
-                           echo "<tr><td>$tgl</td><td>$info</td><td><a href='act/info_delete.php?id_informasi=$id_info' class='btn btn-sm btn-default' title='Delete'><i class='fa fa-trash-o'></i></a></td></tr>";
+                           echo "<tr><td>$tgl</td><td>$info</td><td><a href='act/info_delete.php?id_informasi=$id_info&id_hotel=$id' class='btn btn-sm btn-default' title='Delete'><i class='fa fa-trash-o'></i></a></td></tr>";
                          }
                         ?>
                     </table>

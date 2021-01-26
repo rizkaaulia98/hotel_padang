@@ -298,7 +298,7 @@ $city     = $_SESSION['name'];
                                         <td style=""></td>
                                       <?php } ?>
                                       <td><div class="btn-group">
-                                        <a href="act/delete_rec.php?id=<?php echo $ids; ?>?category=<?php echo $idc; ?>" class="btn btn-sm btn-default" title='Delete' style="color: #26a69a;"><i class="fa fa-trash-o"></i></a>
+                                        <a href="act/delete_rec.php?id=<?php echo $ids; ?>&category=<?php echo $idc; ?>" class="btn btn-sm btn-default" title='Delete' style="color: #26a69a;"><i class="fa fa-trash-o"></i></a>
                                       </div></td>
                                 </tr>
                             <?php } ?>
@@ -350,7 +350,7 @@ $city     = $_SESSION['name'];
                                         <td style=""></td>
                                       <?php } ?>
                                       <td><div class="btn-group">
-                                        <a href="act/delete_rec.php?id=<?php echo $ids; ?>?category=<?php echo $idc; ?>" class="btn btn-sm btn-default" title='Delete' style="color: #26a69a;"><i class="fa fa-trash-o"></i></a>
+                                        <a href="act/delete_rec.php?id=<?php echo $ids; ?>&category=<?php echo $idc; ?>" class="btn btn-sm btn-default" title='Delete' style="color: #26a69a;"><i class="fa fa-trash-o"></i></a>
                                       </div></td>
                                 </tr>
                             <?php } ?>
@@ -402,7 +402,7 @@ $city     = $_SESSION['name'];
                                         <td style=""></td>
                                       <?php } ?>
                                       <td><div class="btn-group">
-                                        <a href="act/delete_rec.php?id=<?php echo $ids; ?>?category=<?php echo $idc; ?>" class="btn btn-sm btn-default" title='Delete' style="color: #26a69a;"><i class="fa fa-trash-o"></i></a>
+                                        <a href="act/delete_rec.php?id=<?php echo $ids; ?>&category=<?php echo $idc; ?>" class="btn btn-sm btn-default" title='Delete' style="color: #26a69a;"><i class="fa fa-trash-o"></i></a>
                                       </div></td>
                                 </tr>
                             <?php } ?>

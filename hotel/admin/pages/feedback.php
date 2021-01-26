@@ -226,7 +226,7 @@ ul.tabs li a.active {
                             </td>
                             <td>
                                 <div class="btn-group">
-                              <a href="act/delete_review.php?id=<?php echo $id_review; ?>" class="btn btn-sm btn-default" title='Delete'><i class="fa fa-trash-o"></i></a>
+                              <a href="act/delete_review.php?id=<?php echo $id_review; ?>&idh=<?php echo $id; ?>" class="btn btn-sm btn-default" title='Delete'><i class="fa fa-trash-o"></i></a>
                           </div>
                             </td>
                         </tr>

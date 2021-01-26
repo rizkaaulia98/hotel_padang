@@ -22,16 +22,16 @@
 
 	if(($jenis_video=="video/mp4" || $jenis_video=="video/avi" || $jenis_video=="video/mov" || $jenis_video=="video/mkv") && ($_FILES["file_video"]["size"] <= 500000000))
 	{
-		$searchvideo = "SELECT video FROM hotel_video WHERE id = '$id'";
-		$cari = mysqli_query($conn, $searchvideo);
-		while($file = mysqli_fetch_array($cari))
-		{
-			$filenya = $file['video'];
-			$video_file = '../../../_video/'.$filenya;
-	    unlink($video_file);
-		}
-
-		$sql_hapus = mysqli_query($conn, "DELETE FROM hotel_video where id = '$id'");
+		// $searchvideo = "SELECT video FROM hotel_video WHERE id = '$id'";
+		// $cari = mysqli_query($conn, $searchvideo);
+		// while($file = mysqli_fetch_array($cari))
+		// {
+		// 	$filenya = $file['video'];
+		// 	$video_file = '../../../_video/'.$filenya;
+	  //   unlink($video_file);
+		// }
+		//
+		// $sql_hapus = mysqli_query($conn, "DELETE FROM hotel_video where id = '$id'");
 		$sourcename = $_FILES["file_video"]["name"];
 		$name = $sourcename;
 		$name = $id.$sn.".mp4";

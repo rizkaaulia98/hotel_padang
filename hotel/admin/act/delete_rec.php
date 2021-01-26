@@ -4,9 +4,9 @@ $id_hotel = $_GET['id'];
 $idc = $_GET['category'];
 
 $sql  = "DELETE from hotel_recommendation where id_hotel='$id_hotel' and id_kategori='$idc'";
-$update = mysqli_query($conn, $sql);
+$delete = mysqli_query($conn, $sql);
 
-if ($update){
+if ($delete){
 	echo "<script>alert ('Recommendation Successfully Deleted');
 	eval(\"parent.location='../index.php?page=setRecommendation'\");
 	</script>";

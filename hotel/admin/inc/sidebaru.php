@@ -36,7 +36,7 @@ $data = mysqli_fetch_array($hasil);
       </a>
   </li>
   <li class="sub-menu">
-      <a href="?">
+      <a href="?page=hotel_owner&id=<?php echo $id ?>">
           <i class="fa fa-building-o"></i>
           <span>List Hotel</span>
       </a>

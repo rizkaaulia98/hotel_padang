@@ -62,7 +62,7 @@ $city     = $_SESSION['name'];
       </a>
   </li>
   <li class="sub-menu">
-                      <a class="active" href="../../">
+                      <a class="active" href="?page=city">
                           <i class="fa fa-chevron-circle-left"></i>
                           <span>Dashboard</span>
                       </a>

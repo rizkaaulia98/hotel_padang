@@ -61,7 +61,7 @@ while($baris = mysqli_fetch_array($hasil3)){
           <thead>
             <tr>
               <td width="450px"><h3 class="box-title"><b>ID:</b> <?php echo $id ?></h3></td>
-              <td><a href="?page=hotel_update&id=<?php echo $id ?>" type="button" class='btn btn-default'><i style="color:#26a69a;" class="fa fa-edit"></i></a></td>
+              <td><a href="?page=hotel_update&id=<?php echo $id ?>" type="button" class='btn btn-default'><i style="color:#26a69a;" class="fa fa-edit" title="Edit Profile"></i></a></td>
             </tr>
           </thead>
         </table> <hr>
@@ -118,8 +118,8 @@ while($baris = mysqli_fetch_array($hasil3)){
                        <td><?php echo $price; ?></td>
                        <td style="text-align: center;"><?php echo $sisa; ?></td>
                        <td>
-                        <a href="" type="button"  data-toggle="modal" data-target="#upR<?php echo $data['id_room']; ?>" ><i style="color: #26a69a;" class="fa fa-edit"></i></a> &nbsp; &nbsp;
-                        <a href="act/delroom.php?id_room=<?php echo $id_room; ?>"  title='Delete'><i style="color: #26a69a;" class="fa fa-trash-o"></i></a>
+                        <a href="" type="button"  data-toggle="modal" data-target="#upR<?php echo $data['id_room']; ?>" ><i style="color: #26a69a;" class="fa fa-edit" title="Edit Room"></i></a> &nbsp; &nbsp;
+                        <a href="act/delroom.php?id_room=<?php echo $id_room; ?>&id_hotel=<?php echo $id_hotel; ?>"  title='Delete'><i style="color: #26a69a;" class="fa fa-trash-o"></i></a>
 
                        </td>
                      </tr>
@@ -214,7 +214,7 @@ while($baris = mysqli_fetch_array($hasil3)){
                   <thead>
                     <tr>
                       <td width="450px"  style="text-align: center"><h3 class="box-title"> Gallery Photos</h3></td>
-                      <td><a href="" type="button" class="btn btn-sm btn-default" data-toggle="modal" data-target="#show<?php echo $baris['id']; ?>"><i style="color:#26a69a;" class="fa fa-edit"></i></a><td>
+                      <td><a href="" type="button" class="btn btn-sm btn-default" data-toggle="modal" data-target="#show<?php echo $baris['id']; ?>"><i style="color:#26a69a;" class="fa fa-trash" title="Delete Photo"></i></a><td>
                     </tr>
                   </thead>
                 </table> <hr>
@@ -252,9 +252,18 @@ while($baris = mysqli_fetch_array($hasil3)){
           <section class="panel">
             <div class="panel-body">
               <div class="btn-group">
-                <button class="btn btn-theme btn-block" style="background:#26a69a;border-color:white; width:385%;" data-toggle='collapse' href='#vid' onclick='' title='Play Video' aria-controls='Nearby'>
-                  <i class="fa fa-play"> PLAY VIDEOS</i>
-                </button>
+                <table>
+                  <tr>
+                    <td><a href="" type="button" data-toggle="modal" data-target="#showv<?php echo $baris['id']; ?>"><i style="color:#26a69a;" class="fa fa-trash" title="Delete Video"></i> <span style="color: #26a69a;">Delete Video</span></a></td>
+                  </tr>
+                  <tr>
+                    <td><button class="btn btn-theme btn-block" style="background:#26a69a;border-color:white; width:385%;" data-toggle='collapse' href='#vid' onclick='' title='Play Video' aria-controls='Nearby'>
+                      <i class="fa fa-play"> PLAY VIDEOS</i>
+                    </button></td>
+                  </tr>
+
+
+                </table>
               </div> <br><br>
               <div class='collapse' id='vid'>
                 <div class="html5gallery" data-html5player="true" data-width="464" data-height="272" data-src="" data-webm="" data-title="Big Buck Bunny">
@@ -374,7 +383,7 @@ while($baris = mysqli_fetch_array($hasil3)){
                               $tgl = $rows['tanggal'];
                               $info = $rows['informasi'];
                               $id_info =$rows['id_informasi'];
-                              echo "<tr><td>$tgl</td><td>$info</td><td><a style='color:#26a69a;' href='act/info_delete.php?id_informasi=$id_info' title='Delete'><i class='fa fa-trash-o'></i></a></td></tr>";
+                              echo "<tr><td>$tgl</td><td>$info</td><td><a style='color:#26a69a;' href='act/info_delete.php?id_informasi=$id_info&id_hotel=$id' title='Delete'><i class='fa fa-trash-o'></i></a></td></tr>";
                             }
                            ?>
                        </table>
@@ -466,7 +475,57 @@ while($baris = mysqli_fetch_array($hasil3)){
                 <td><?php echo $sn; ?></td>
                 <td><?php echo $p; ?></td>
                 <td>
-                  <a href="act/delphoto.php?id_photo=<?php echo $p; ?>" class="btn btn-sm btn-default"><i class="fa fa-trash"></i></a>
+                  <a href="act/delphoto.php?id_photo=<?php echo $p; ?>&id_hotel=<?php echo $ih; ?>" class="btn btn-sm btn-default"><i class="fa fa-trash"></i></a>
+
+                </td>
+              </tr>
+
+            <?php } ?>
+            </tbody>
+          </table>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- modal show photo -->
+<div class="modal fade" id="showv<?php echo $baris['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <table>
+          <thead>
+            <tr>
+              <td style="width: 550px;"><h5 class="modal-title" id="exampleModalLabel">Delete Photos</h5></td>
+              <td><button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></td>
+            </tr>
+          </thead>
+        </table>
+      </div>
+      <div class="modal-body">
+          <table class="table">
+            <thead>
+              <tr>
+                <td>ID Photo</td>
+                <td>Photo</td>
+                <td>Delete</td>
+              </tr>
+            </thead>
+            <tbody  style='vertical-align:top;'>
+              <?php
+              $query = "SELECT * FROM hotel_video where id = '$id'";
+              $vid = mysqli_query($conn, $query);
+              while ($show=mysqli_fetch_array($vid)){
+                $snv = $show['sn'];
+                $ihv = $show['id'];
+                $pv = $show['video'];
+              ?>
+              <tr>
+                <td><?php echo $snv; ?></td>
+                <td><?php echo $pv; ?></td>
+                <td>
+                  <a href="act/delvideo.php?id_video=<?php echo $pv; ?>&id_hotel=<?php echo $ihv; ?>" class="btn btn-sm btn-default"><i class="fa fa-trash"></i></a>
 
                 </td>
               </tr>

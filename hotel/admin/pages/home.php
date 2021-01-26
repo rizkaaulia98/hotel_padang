@@ -41,10 +41,10 @@ $city     = $_SESSION['name'];
                                 <td><?php echo "$username"; ?></td>
                                 <td>
                                     <div class="btn-group">
-                						<a href="?page=hotel_detail&id=<?php echo $id; ?>" class="btn btn-sm btn-default" title='Detail' style="color: #26a69a;"><i class="fa fa-list"></i></a>
+                						<a href="?page=hotel_detail&id=<?php echo $id; ?>" class="btn btn-sm btn-default" title='Detail' style="color: #26a69a;"><i class="fa fa-eye"></i></a>
                             <a href="act/hotel_delete.php?id=<?php echo $id; ?>" class="btn btn-sm btn-default" title='Delete' style="color: #26a69a;"><i class="fa fa-trash-o"></i></a>
                             <?php if ($username == null) { ?>
-                              <a href="?page=user_add" class="btn btn-sm btn-default" title="Set Admin" tooltip="Set Admin" style="color: #26a69a;"><i class="fa fa-pencil"></i></a>
+                              <a href="?page=set_admin&hotel=<?php echo $id; ?>" class="btn btn-sm btn-default" title="Set Admin" tooltip="Set Admin" style="color: #26a69a;"><i class="fa fa-plus"></i></a>
                           <?php  } else { ?>
                             <a href="?page=user_update&username=<?php echo $username; ?>" class="btn btn-sm btn-default" title='Update Admin' style="color: #26a69a;"><i class="fa fa-edit"></i></a>
 

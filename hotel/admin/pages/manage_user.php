@@ -158,7 +158,9 @@ ul.tabs li a.active {
 
                     <tbody>
                     <?php
-                        $sql = mysqli_query($conn, "SELECT admin.name ,admin.username, admin.email, admin.last_login, hotel.name as hotel from admin join hotel using (username) where admin.role='P' order by hotel.name asc");
+                        $sql = mysqli_query($conn, "SELECT admin.name ,admin.username, admin.email, admin.last_login, hotel.name as hotel
+                          from admin join hotel using (username), city where admin.role='P' and city.id='$id_city' AND ST_CONTAINS(city.geom, hotel.geom)
+                          order by hotel.name asc");
                         while($data =  mysqli_fetch_array($sql)){
                         //$id = $data['id'];
                         $username = $data['username'];
