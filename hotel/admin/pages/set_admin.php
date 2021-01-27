@@ -1,5 +1,11 @@
 <?php
+session_start();
+$username = $_SESSION['username'];
+$id_city  = $_SESSION['id'];
+$city     = $_SESSION['name'];
 $hotel=$_GET['hotel'];
+
+
 ?>
 <div class="col-sm-12"> <!-- menampilkan form add facility-->
   <section class="panel">
@@ -42,10 +48,10 @@ $hotel=$_GET['hotel'];
               <div class="col-sm-10">
                   <select  name="id[]"  id="id" class="form-control">
                       <?php
-                      $hotel=mysqli_query($conn, "SELECT id, name from hotel where id='$hotel'");
+                      $hotel=mysqli_query($conn, "SELECT hotel.id as ids, hotel.name as nama from hotel, city where id='$hotel' and city.id='$id_city' and and ST_CONTAINS(city.geom, hotel.geom) ");
                       while($hot = mysqli_fetch_assoc($hotel))
                       {
-                      echo"<option value=".$hot['id'].">".$hot['name']."</option>";
+                      echo"<option value=".$hot['ids'].">".$hot['nama']."</option>";
                       }
                       ?>
 
@@ -64,12 +70,12 @@ $hotel=$_GET['hotel'];
                   <input type="text" class="form-control" name="username" value="">
               </div>
                 </div>
-                <div class="form-group">
+                <!-- <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label" for="pass">Password</label>
               <div class="col-sm-10">
                   <input type="password" class="form-control" name="password" value="">
               </div>
-                </div>
+                </div> -->
                 <button type="submit" class="btn btn-primary pull-right">Save <i class="fa fa-floppy-o"></i></button>
         </form>
         <!-- <?php } ?> -->

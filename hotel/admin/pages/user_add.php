@@ -1,3 +1,9 @@
+<?php
+session_start();
+$username = $_SESSION['username'];
+$id_city  = $_SESSION['id'];
+$city     = $_SESSION['name'];
+?>
 <div class="col-sm-12"> <!-- menampilkan form add facility-->
   <section class="panel">
     <div class="panel-body">
@@ -40,10 +46,10 @@
                   <select  name="id[]"  id="id" class="form-control">
               <option value='0'>None</option>
                       <?php
-                      $hotel=mysqli_query($conn, "SELECT id, name from hotel where username is null or username = ''");
+                      $hotel=mysqli_query($conn, "SELECT hotel.id as ids, hotel.name as nama from hotel, city where username is null and city.id='$id_city' and ST_CONTAINS(city.geom, hotel.geom)");
                       while($hot = mysqli_fetch_assoc($hotel))
                       {
-                      echo"<option value=".$hot['id'].">".$hot['name']."</option>";
+                      echo"<option value=".$hot['ids'].">".$hot['nama']."</option>";
                       }
                       ?>
 
@@ -62,12 +68,12 @@
                   <input type="text" class="form-control" name="username" value="">
               </div>
                 </div>
-                <div class="form-group">
+                <!-- <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label" for="pass">Password</label>
               <div class="col-sm-10">
                   <input type="password" class="form-control" name="password" value="">
               </div>
-                </div>
+                </div> -->
                 <button type="submit" class="btn btn-primary pull-right">Save <i class="fa fa-floppy-o"></i></button>
         </form>
         <!-- <?php } ?> -->

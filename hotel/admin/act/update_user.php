@@ -16,7 +16,7 @@ $email = $_POST['email'];
 $aset = $_POST['aset'];
 //echo "username $username, $nama,$role";
 
-$sql  = "UPDATE admin set name='$nama', password='$pass', role='$role', hp='$no_hp', address='$alamat', stewardship_period='$periode', username='$username', email='$email' where username='$username'";
+$sql  = "UPDATE admin set name='$nama', role='$role', hp='$no_hp', address='$alamat', stewardship_period='$periode', username='$username', email='$email' where username='$username'";
 $updateHotel = mysqli_query($conn, "UPDATE hotel set username=null where username='$username'");
 $insert = mysqli_query($conn, $sql);
 if ($insert)
@@ -28,6 +28,6 @@ else
 	echo "<script>alert ('Error');</script>";
 	}
 	echo "<script>
-		eval(\"parent.location='../../index.php'\");
+		eval(\"parent.location='../index.php?page=manage_user'\");
 		</script>";
 ?>

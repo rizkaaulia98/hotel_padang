@@ -7,12 +7,12 @@ $nama = $_POST['nama'];
 	$alamat = $_POST['alamat'];
 	$no_hp = $_POST['no_hp'];
 	$role = $_POST['role'];
-	$id = $_POST['id'];
+	$id = $_POST['ids'];
 	$user = $_POST['username'];
 	$password = $_POST['password'];
 	$pass = md5(md5($password));
-		$sql = mysqli_query($conn, "INSERT into admin (name, stewardship_period, address, hp, role, username, password, email)
-	values ('$nama',  '$periode', '$alamat', '$no_hp','$role', '$user', '$pass', '$email')");
+		$sql = mysqli_query($conn, "INSERT into admin (name, stewardship_period, address, hp, role, username, email)
+	values ('$nama',  '$periode', '$alamat', '$no_hp','$role', '$user', '$email')");
 	if($sql){
 		for($i=0;$i<count($_POST['id']);$i++){
 			$id = $_POST['id'][$i];

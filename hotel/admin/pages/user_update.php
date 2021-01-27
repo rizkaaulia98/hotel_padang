@@ -82,9 +82,9 @@
 
         <div class="form-group">
           <label class="col-sm-2 col-sm-2 control-label" for="password">Password</label>
-		  <div class="col-sm-10">
+		  <!-- <div class="col-sm-10">
           <input type="password" class="form-control" name="password" placeholder="Dont forget to input password again">
-		  </div>
+		  </div> -->
         </div>
         <button type="submit" class="btn btn-primary pull-right">Save <i class="fa fa-floppy-o"></i></button>
 </form>
