@@ -13,7 +13,8 @@
           //echo $data['username'];
 						?>
         <form class="form-horizontal style-form" role="form" action="act/update_user.php" method="post">
-         <input type="text" class="form-control hidden" id="username" name="username" value="<?php echo $data['username']?>">
+          <input type="text" class="form-control hidden" id="username" name="username" value="<?php echo $data['username']?>">
+         <input type="text" class="form-control hidden" id="username" name="hotel" value="<?php echo $_GET['id_hotel']?>">
         <input type="text" class="form-control hidden" id="stewardship_period" name="stewardship_period" value="<?php echo $data['stewardship_period']?>">
         <div class="form-group">
           <label class="col-sm-2 col-sm-2 control-label" for="username">Username</label>
@@ -80,12 +81,12 @@
 		  </div>
         </div>
 
-        <div class="form-group">
+        <!-- <div class="form-group">
           <label class="col-sm-2 col-sm-2 control-label" for="password">Password</label>
-		  <!-- <div class="col-sm-10">
+		  <div class="col-sm-10">
           <input type="password" class="form-control" name="password" placeholder="Dont forget to input password again">
-		  </div> -->
-        </div>
+		  </div>
+        </div> -->
         <button type="submit" class="btn btn-primary pull-right">Save <i class="fa fa-floppy-o"></i></button>
 </form>
 <?php } ?>

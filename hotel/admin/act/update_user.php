@@ -14,10 +14,11 @@ $periode = $_POST['periode'];
 $username = $_POST['username'];
 $email = $_POST['email'];
 $aset = $_POST['aset'];
+$hotel = $_POST['hotel'];
 //echo "username $username, $nama,$role";
 
 $sql  = "UPDATE admin set name='$nama', role='$role', hp='$no_hp', address='$alamat', stewardship_period='$periode', username='$username', email='$email' where username='$username'";
-$updateHotel = mysqli_query($conn, "UPDATE hotel set username=null where username='$username'");
+$updateHotel = mysqli_query($conn, "UPDATE hotel set username='$username' where id='$hotel'");
 $insert = mysqli_query($conn, $sql);
 if ($insert)
 	{

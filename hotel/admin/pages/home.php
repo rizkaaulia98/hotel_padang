@@ -46,7 +46,7 @@ $city     = $_SESSION['name'];
                             <?php if ($username == null) { ?>
                               <a href="?page=set_admin&hotel=<?php echo $id; ?>" class="btn btn-sm btn-default" title="Set Admin" tooltip="Set Admin" style="color: #26a69a;"><i class="fa fa-plus"></i></a>
                           <?php  } else { ?>
-                            <a href="?page=user_update&username=<?php echo $username; ?>" class="btn btn-sm btn-default" title='Update Admin' style="color: #26a69a;"><i class="fa fa-edit"></i></a>
+                            <a href="?page=user_update&username=<?php echo $username; ?>&id_hotel=<?php echo $id; ?>" class="btn btn-sm btn-default" title='Update Admin' style="color: #26a69a;"><i class="fa fa-edit"></i></a>
 
                         <?php  } ?>
 

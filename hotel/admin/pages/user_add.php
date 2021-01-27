@@ -68,12 +68,12 @@ $city     = $_SESSION['name'];
                   <input type="text" class="form-control" name="username" value="">
               </div>
                 </div>
-                <!-- <div class="form-group">
+                <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label" for="pass">Password</label>
               <div class="col-sm-10">
                   <input type="password" class="form-control" name="password" value="">
               </div>
-                </div> -->
+                </div>
                 <button type="submit" class="btn btn-primary pull-right">Save <i class="fa fa-floppy-o"></i></button>
         </form>
         <!-- <?php } ?> -->

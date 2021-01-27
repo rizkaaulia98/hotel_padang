@@ -34,7 +34,7 @@
        ?>
           <form role="form" action="act/hotel_add.php" enctype="multipart/form-data" method="post">
 
-            <input type="text" class="form-control" id="id" name="id" value="<?php echo $idmax ?>">
+            <input type="text" class="form-control hidden" id="id" name="id" value="<?php echo $idmax ?>">
 
             <div class="form-group">
 

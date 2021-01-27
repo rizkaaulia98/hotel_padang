@@ -16,7 +16,7 @@ if(isset($_POST['username'])){
 
 		if($dt['role']=='A'){
 			$_SESSION['A'] = true;
-			?><script language="JavaScript">document.location='../'</script><?php
+			?><script language="JavaScript">document.location='../index.php?page=city'</script><?php
 			echo "<script>alert (' hyyy');</script>";
 		}
 		if($dt['role']=='P'){

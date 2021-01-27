@@ -141,6 +141,7 @@ ul.tabs li a.active {
               <button class="w3-bar-item w3-button tablink w3-teal" onclick="openCity(event,'Request')">Request</button>
               <button class="w3-bar-item w3-button tablink " onclick="openCity(event,'Approved')">Approved</button>
               <button class="w3-bar-item w3-button tablink " onclick="openCity(event,'Cancelled')">Cancelled</button>
+              <button class="w3-bar-item w3-button tablink " onclick="openCity(event,'Out')">Checked Out</button>
               <button class="w3-bar-item w3-button tablink " onclick="openCity(event,'Declined')">Declined</button>
 
             </div>
@@ -250,7 +251,6 @@ ul.tabs li a.active {
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Date of Transaction</th>
                                 <th>Customer</th>
                                 <th>Room</th>
                                 <th>Count</th>
@@ -258,13 +258,14 @@ ul.tabs li a.active {
                                 <th>Check Out</th>
                                 <th>Total Payment</th>
                                 <th>Status</th>
+                                <th>Checkout</th>
                             </tr>
                         </thead>
 
                         <tbody>
                         <?php
                         $no=0;
-                            $sql = mysqli_query($conn, "SELECT DATEDIFF(reservasi.dateout, reservasi.datein)as hari, reservasi.datein, reservasi.dateout, reservasi.username, reservasi.id_hotel, reservasi.tgl, reservasi.jumlah, reservasi.status,
+                            $sql = mysqli_query($conn, "SELECT DATEDIFF(reservasi.dateout, reservasi.datein)as hari, reservasi.datein, reservasi.dateout, reservasi.username, reservasi.id_hotel, reservasi.tgl, reservasi.jumlah, reservasi.status, reservasi.id_reservasi,
                               hotel.name as hotel, detail_room.name as room, detail_room.price, detail_room.available, detail_room.sisa FROM reservasi join hotel on reservasi.id_hotel=hotel.id
                               left join detail_room on reservasi.id_room=detail_room.id_room where reservasi.id_hotel = '$id' and reservasi.status='2' order by reservasi.tgl");
                             while($data =  mysqli_fetch_array($sql)){
@@ -278,6 +279,7 @@ ul.tabs li a.active {
                             $id_hotel = $data['id_hotel'];
                             $price = $data['price'];
                             $username = $data['username'];
+                            $id_reservasi = $data['id_reservasi'];
                             $available = $data['available'];
                             $sisa = $data['sisa'];
                             $hari = $data['hari'];
@@ -288,7 +290,7 @@ ul.tabs li a.active {
                         ?>
                             <tr>
                                 <td><?php echo "$no"; ?></td>
-                                <td><?php echo "$tgl"; ?></td>
+                                <!-- <td><?php echo "$tgl"; ?></td> -->
                                 <td><?php echo "$username"; ?></td>
                                 <td><?php echo "$room"; ?></td>
                                 <td><?php echo "$jumlah"; ?></td>
@@ -298,6 +300,11 @@ ul.tabs li a.active {
                                 <?php if ($status='2') { ?>
                                   <td style="background-color: lightgreen;"><?php echo "Approved"; ?></td>
                               <?php  } ?>
+                              <td>
+                                <div class="btn-group">
+                                    <a href="?page=checkout&id_reservasi=<?php echo $id_reservasi ?>&status=<?php echo $status ?>&id_hotel=<?php echo $id_hotel ?>" type="button"  title='Check out'><i class="icon-esc" style="color: red;" align="center"></i></a>
+                                </div>
+                              </td>
                             </tr>
                             <?php } ?>
                         </tbody>
@@ -373,6 +380,76 @@ ul.tabs li a.active {
                         </tbody>
                     </table>
             </div>
+
+            <!-- Cancelled -->
+                        <div id="Out" class="w3-container w3-border book" style="display:none">
+                            <?php
+                                $sql = mysqli_query($conn, "SELECT count(id_room) as count from reservasi where id_hotel = '$id' and status='5'");
+                                $data =  mysqli_fetch_array($sql);
+                                $count = $data['count'];
+                                $jml=number_format($count);
+
+                            ?>
+                            <h2 class="box-title"><i class="fa fa-logout"></i>  Checked Out</h2>
+                            <p>Total Customer: <?php echo $jml; ?></h4></p><hr>
+
+                                <table id="example3" class="table table-hover table-bordered table-striped" >
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Date of Transaction</th>
+                                            <th>Customer</th>
+                                            <th>Room</th>
+                                            <th>Count</th>
+                                            <th>Check In</th>
+                                            <th>Check Out</th>
+                                            <th>Total Payment</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                    <?php
+                                    $no=0;
+                                        $sql = mysqli_query($conn, "SELECT DATEDIFF(reservasi.dateout, reservasi.datein)as hari, reservasi.username, reservasi.id_hotel, reservasi.tgl, reservasi.jumlah, reservasi.datein,
+                                          reservasi.dateout, reservasi.status, hotel.name as hotel, detail_room.name as room, detail_room.price
+                                          FROM reservasi join hotel on reservasi.id_hotel=hotel.id
+                                          join detail_room on reservasi.id_room=detail_room.id_room where reservasi.id_hotel = '$id'
+                                          and reservasi.status='5'");
+                                        while($data =  mysqli_fetch_array($sql)){
+                                        $tgl = $data['tgl'];
+                                        $jumlah = $data['jumlah'];
+                                        $datein = $data['datein'];
+                                        $dateout = $data['dateout'];
+                                        $status = $data['status'];
+                                        $hotel = $data['hotel'];
+                                        $room = $data['room'];
+                                        $id_hotel = $data['id_hotel'];
+                                        $price = $data['price'];
+                                        $username = $data['username'];
+                                        $hari = $data['hari'];
+
+                                        $total = ($jumlah * $price);
+                                        $payment = ($total*$hari);
+                                        $no++;
+                                    ?>
+                                        <tr>
+                                            <td><?php echo "$no"; ?></td>
+                                            <td><?php echo "$tgl"; ?></td>
+                                            <td><?php echo "$username"; ?></td>
+                                            <td><?php echo "$room"; ?></td>
+                                            <td><?php echo "$jumlah"; ?></td>
+                                            <td><?php echo "$datein"; ?></td>
+                                            <td><?php echo "$dateout"; ?></td>
+                                            <td><?php echo "$payment"; ?></td>
+                                            <?php if ($status='5') { ?>
+                                              <td style="background-color: red;"><?php echo "Checked Out"; ?></td>
+                                          <?php  } ?>
+                                        </tr>
+                                        <?php } ?>
+                                    </tbody>
+                                </table>
+                        </div>
 
             <!-- declined -->
 
