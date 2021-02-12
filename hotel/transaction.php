@@ -158,8 +158,8 @@ session_start();
                                                   <th>Check In</th>
                                                   <th>Check Out</th>
                                                   <th>Total Payment</th>
-                                                  <th>Status</th>
                                                   <th>Action</th>
+                                                  <th>Status</th>
                                               </tr>
                                           </thead>
 
@@ -200,6 +200,13 @@ session_start();
                                                   <td><?php echo "$datein"; ?></td>
                                                   <td><?php echo "$dateout"; ?></td>
                                                   <td><?php echo "$total"; ?></td>
+                                                  <td>
+                                                      <div class="btn-group">
+                                                          <a href="cancelation.php?id_reservasi=<?php echo $id_reservasi ?>&status=<?php echo $status ?>&username=<?php echo $username ?>"  title='Cancel'><i class="fa fa-minus-square" style="color: red;" align="center"></i></a>
+                                                          <a href=" https://api.whatsapp.com/send?phone=<?php echo $cp ?>&text=ID%20Reservasi:%20<?php echo $id_reservasi ?>%0AAtas%20Nama:%20<?php echo $_SESSION['username'] ?>%0AKamar:%20<?php echo $room ?>%0AJumlah:%20<?php echo $jumlah ?>%20kamar%0ATanggal%20Check%20In:%20<?php echo $datein ?>%0ATanggal%20Check%20Out:%20<?php echo $dateout ?>"  title='Confirm via Whatsapp'><i class="fa fa-phone-square" style="color: green;" align="center"></i></a>
+
+                                          			      </div>
+                                                  </td>
                                                   <?php if ($status=='1') { ?>
                                                     <td style="background-color: yellow;"><?php echo "Waiting"; ?></td>
                                                 <?php  }elseif($status=='2'){ ?>
@@ -208,16 +215,9 @@ session_start();
                                                     <td style="background-color: lightgrey;"><?php echo "Declined"; ?></td>
                                                   <?php }elseif ($status=='4') {?>
                                                     <td style="background-color: red;"><?php echo "Cancelled"; ?></td>
+                                                  <?php }elseif ($status=='5') {?>
+                                                    <td style="background-color: orange;"><?php echo "Check Out"; ?></td>
                                                   <?php } ?>
-                                                  <td>
-                                                      <div class="btn-group">
-                                                          <a href="cancelation.php?id_reservasi=<?php echo $id_reservasi ?>&status=<?php echo $status ?>&username=<?php echo $username ?>"  title='Cancel'><i class="fa fa-minus-square" style="color: red;" align="center"></i></a>
-                                                          <a href=" https://api.whatsapp.com/send?phone=<?php echo $cp ?>&text=ID%20Reservasi:%20<?php echo $id_reservasi ?>%0AAtas%20Nama:%20<?php echo $_SESSION['username'] ?>%0AKamar:%20<?php echo $room ?>%0AJumlah:%20<?php echo $jumlah ?>%20kamar%0ATanggal%20Check%20In:%20<?php echo $datein ?>%0ATanggal%20Check%20Out:%20<?php echo $dateout ?>"  title='Confirm via Whatsapp'><i class="fa fa-phone-square" style="color: green;" align="center"></i></a>
-
-                                          			      </div>
-                                                  </td>
-
-
                                               </tr>
                                               <?php } ?>
                                           </tbody>

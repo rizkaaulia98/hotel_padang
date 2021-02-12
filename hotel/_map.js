@@ -1105,7 +1105,7 @@ function ht_sekitar_user(latitude,longitude,rad){ // TEMPAT WISATA SEKITAR USER
       var row = rows[i];
       var id = row.id;
       var name = row.name;
-      var jarak = row.jarak;
+      // var jarak = row.jarak;
       var lat = row.lat;
       var lon = row.lng;
 
@@ -1978,7 +1978,7 @@ $.ajax({url: server+'_sekitar_small_industry.php?lat='+latitude+'&lng='+longitud
     var row = rows[i];
     var id = row.id;
     var name = row.name;
-    var jarak = row.jarak;
+    // var jarak = row.jarak;
     var lat=row.lat;
     var lon = row.lng;
     console.log(name);
@@ -2010,7 +2010,7 @@ function kuliner_sekitar(latitude,longitude,rad){ //KULINER SEKITAR ANGKOT
       var row = rows[i];
       var id = row.id;
       var name = row.name;
-      var jarak = row.jarak;
+      // var jarak = row.jarak;
       var lat=row.lat;
       var lon = row.lng;
       console.log(name);
@@ -2044,7 +2044,7 @@ $.ajax({url: server+'_sekitar_worship_place.php?lat='+latitude+'&lng='+longitude
     var row = rows[i];
     var id = row.id;
     var name = row.name;
-    var jarak = row.jarak;
+    // var jarak = row.jarak;
     var lat=row.lat;
     var lon = row.lng;
 
@@ -2077,7 +2077,7 @@ function oleholeh_sekitar(latitude,longitude,rad){ // OLEH-OLEH SEKITAR ANGKOT
       var row = rows[i];
       var id = row.id;
       var name = row.name;
-      var jarak = row.jarak;
+      // var jarak = row.jarak;
       var lat=row.lat;
       var lon = row.lng;
 
@@ -2109,7 +2109,7 @@ function tw_sekitar(latitude,longitude,rad){ // TEMPAT WISATA SEKITAR ANGKOT
       var row = rows[i];
       var id = row.id;
       var name = row.name;
-      var jarak = row.jarak;
+      // var jarak = row.jarak;
       var lat = row.lat;
       var lon = row.lng;
 
@@ -2152,7 +2152,7 @@ $('#table_kanan_hotel').append("<tr><th class='centered'>Hotel Name</th><th clas
       var row = rows[i];
       var id          = row.id;
       var name       = row.name;
-      var jarak  = row.jarak;
+      // var jarak  = row.jarak;
       var lat    = row.lat;
       var lon   = row.lng;
 
