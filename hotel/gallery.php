@@ -6,12 +6,12 @@ $a = $_GET["idgallery"];
     $id_city  = $_SESSION['id'];
     $city     = $_SESSION['name'];
 // echo $a;
-$s = "SELECT name, cp from hotel where id = '$a'";
-$query = mysqli_query($conn, $s);
-while($data = mysqli_fetch_array($query)) {
-  $name = $data['name'];
-  $cp = $data['cp'];
-}
+// $s = "SELECT name, cp from hotel where id = '$a'";
+// $query = mysqli_query($conn, $s);
+// while($data = mysqli_fetch_array($query)) {
+//   $name = $data['name'];
+//   $cp = $data['cp'];
+// }
  ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -273,7 +273,18 @@ while($data = mysqli_fetch_array($query)) {
                               </tr>
                             </thead>
                           </table>
-                          <td><a style="background-color: lightgreen;"><a href=" https://api.whatsapp.com/send?phone=<?php echo $cp; ?>"  title='Contact Via Whatsapp' target="_blank"><img src="https://wa.widget.web.id/assets/img/tombol-wa.png"></a></td>
+                          <?php
+                          include ('../connect.php');
+                          $nope = mysqli_query($conn, "SELECT cp from hotel where id='$a'");
+                          while($data = mysqli_fetch_array($nope)){
+                            $cp = $data ['cp'];
+                            $char = strlen($cp);
+                          }
+                          if ($char > 10) {?>
+                            <td><a style="background-color: lightgreen;"><a href=" https://api.whatsapp.com/send?phone=<?php echo "+62$cp"; ?>"  title='Contact Via Whatsapp' target="_blank"><img src="https://wa.widget.web.id/assets/img/tombol-wa.png"></a></td>
+                          <?php }else{ ?>
+                            <td><a style="background-color: lightgreen;"><img src="icon/exc.png" alt="Image" height="42" width="42"><span>Contact Via Whatsapp Is Currently Unavailable</span></td>
+                          <?php } ?>
 
                         </div> <br>
                         <div class='collapse' id='info'>

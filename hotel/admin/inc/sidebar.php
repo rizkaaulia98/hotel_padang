@@ -26,6 +26,12 @@ $city     = $_SESSION['name'];
       </a>
   </li>
   <li class="sub-menu">
+      <a href="http://localhost/hotel_padang1/hotel/admin/pages/distribution.php">
+          <i class="icon-chart"></i>
+          <span>Hotel Distribution</span>
+      </a>
+  </li>
+  <li class="sub-menu">
       <a href="?page=home">
           <i class="fa fa-building-o"></i>
           <span>List Hotel</span>

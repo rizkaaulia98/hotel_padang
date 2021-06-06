@@ -52,7 +52,7 @@ session_start();
 
     <script src="../config_public.js"></script>
     <script src="_map.js"></script>
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDgpfxdQ0Ep_nieNjV64u4yXWeSFHAT4BE"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCANwWGF7aEZiZbtT0vV3v27gRx_ufIoHs"></script>
 
 
     <style type="text/css">

@@ -203,7 +203,7 @@ session_start();
                                                   <td>
                                                       <div class="btn-group">
                                                           <a href="cancelation.php?id_reservasi=<?php echo $id_reservasi ?>&status=<?php echo $status ?>&username=<?php echo $username ?>"  title='Cancel'><i class="fa fa-minus-square" style="color: red;" align="center"></i></a>
-                                                          <a href=" https://api.whatsapp.com/send?phone=<?php echo $cp ?>&text=ID%20Reservasi:%20<?php echo $id_reservasi ?>%0AAtas%20Nama:%20<?php echo $_SESSION['username'] ?>%0AKamar:%20<?php echo $room ?>%0AJumlah:%20<?php echo $jumlah ?>%20kamar%0ATanggal%20Check%20In:%20<?php echo $datein ?>%0ATanggal%20Check%20Out:%20<?php echo $dateout ?>"  title='Confirm via Whatsapp'><i class="fa fa-phone-square" style="color: green;" align="center"></i></a>
+                                                          <a href=" https://api.whatsapp.com/send?phone=<?php echo "+62$cp" ?>&text=ID%20Reservasi:%20<?php echo $id_reservasi ?>%0AAtas%20Nama:%20<?php echo $_SESSION['username'] ?>%0AKamar:%20<?php echo $room ?>%0AJumlah:%20<?php echo $jumlah ?>%20kamar%0ATanggal%20Check%20In:%20<?php echo $datein ?>%0ATanggal%20Check%20Out:%20<?php echo $dateout ?>"  title='Confirm via Whatsapp'><i class="fa fa-phone-square" style="color: green;" align="center"></i></a>
 
                                           			      </div>
                                                   </td>
